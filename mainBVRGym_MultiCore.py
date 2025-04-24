@@ -11,6 +11,8 @@ from jsb_gym.environmets.config import BVRGym_PPO1, BVRGym_PPO2, BVRGym_PPODog
 from numpy.random import seed
 from jsb_gym.TAU.config import aim_evs_BVRGym, f16_evs_BVRGym, aim_dog_BVRGym, f16_dog_BVRGym
 
+import datetime
+
 def init_pool():
     seed()
 
@@ -41,8 +43,8 @@ def runPPO(args):
         torch_save = 'jsb_gym/logs/RL/DogR.pth'
         state_scale = 1
 
-    
-    writer = SummaryWriter('runs/' + args['track'] )
+    current_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    writer = SummaryWriter('runs/' + current_time + '/' + args['track'] )
     state_dim = env.observation_space
     action_dim = env.action_space.shape[1]
     memory = Memory()
@@ -82,7 +84,8 @@ def runPPO(args):
                 tb_obs0 = i
             else:
                 for key in tb_obs0:
-                    tb_obs0[key] += i[key]
+                    if key in i:
+                        tb_obs0[key] += i[key]
 
         nr = len(tb_obs)
         for key in tb_obs0:
@@ -259,6 +262,11 @@ if __name__ == '__main__':
     #    torch.manual_seed(args['seed'])
     #    np.random.seed(args['seed'])
     
+    ## 默认参数
+    args['track'] = 'Dog'
+    args['cpu_cores'] = 10
+    args['Eps'] = 10000
+    args['eps'] = 1
     runPPO(args)
 
 # training: 
