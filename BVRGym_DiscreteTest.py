@@ -4,7 +4,9 @@ import torch
 from enum import Enum
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-
+import random
+from numpy.random import seed
+import multiprocessing
 # 导入必要的模块
 from jsb_gym.environmets import bvrdog
 from jsb_gym.RL.discrete_actor import DiscretePPO
@@ -39,6 +41,20 @@ class DiscreteActionMapping:
         # 返回连续动作向量，固定推力
         return np.array([heading, altitude, fixed_thrust])
 
+def set_seeds(base_seed=42):
+    worker_id = multiprocessing.current_process()._identity[0] if hasattr(multiprocessing.current_process(), '_identity') else 1
+    worker_seed = base_seed + worker_id
+    np.random.seed(worker_seed)
+    torch.manual_seed(worker_seed)
+    random.seed(worker_seed)
+    # 如果使用CUDA
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(worker_seed)
+        torch.cuda.manual_seed_all(worker_seed)
+        torch.backends.cudnn.deterministic = True
+    # 然后生成环境的种子
+    return worker_seed
+
 # 从gym.spaces导入Discrete类
 from gym.spaces import Discrete
 
@@ -54,16 +70,18 @@ def test_model(model_path, num_episodes=100, visualize=False):
     返回:
         metrics: 包含性能指标的字典
     """
+    set_seeds(42)
     # 设置参数
     args = {
         'track': 'Dog',
         'vizualize': visualize,
-        'cpu_cores': 1,
+        'cpu_cores': 10,
         'discrete_actions': True  # 使用离散动作空间
     }
     
     # 创建环境
     env = bvrdog.BVRDog(BVRGym_PPODog, args, aim_dog_BVRGym, f16_dog_BVRGym)
+    # env.sim_time_sec_max = 60 * 16
     state_dim = env.observation_space
     
     # 创建动作映射器
@@ -178,6 +196,7 @@ def test_model(model_path, num_episodes=100, visualize=False):
             red_missile_hit['aim1r'] += 1
         if env.aimr_block['aim2r'].target_hit:
             red_missile_hit['aim2r'] += 1
+        state = env.reset()
     
     # 关闭文件
     all_sa_pairs_file.close()
@@ -202,7 +221,9 @@ def test_model(model_path, num_episodes=100, visualize=False):
         'average_episode_length': average_episode_length,
         'blue_missile_hit': blue_missile_hit,
         'red_missile_hit': red_missile_hit,
-        'action_distribution': action_counts / np.sum(action_counts)
+        'action_distribution': action_counts / np.sum(action_counts),
+        'rewards': rewards,
+        'episode_lengths': episode_lengths
     }
     
     return metrics
@@ -244,18 +265,102 @@ def visualize_metrics(metrics):
     plt.savefig('test_results_pie.png')
     plt.close()
 
+def parallel_test_model(model_path, num_episodes=100, num_cores=4):
+    # 确保num_cores至少为1
+    num_cores = max(1, num_cores)
+    pool = multiprocessing.Pool(processes=num_cores, initializer=set_seeds)
+    
+    # 分配测试任务
+    episodes_per_core = num_episodes // num_cores
+    input_data = [(model_path, episodes_per_core) for _ in range(num_cores)]
+    
+    # 并行执行测试
+    results = pool.map(test_model_worker, input_data)
+    
+    # 整合结果
+    combined_metrics = combine_metrics(results)
+    return combined_metrics
+
+def test_model_worker(args):
+    model_path, episodes = args
+    
+    # 使用与训练相同的环境配置
+    env_args = {
+        'track': 'Dog',
+        'vizualize': False,
+        'cpu_cores': 1,
+        'discrete_actions': True
+    }
+    
+    # 设置独立随机种子
+    set_seeds(np.random.randint(10000))
+    
+    # 调用test_model函数并返回其结果
+    metrics = test_model(model_path, episodes, visualize=False)
+    return metrics
+
+def init_pool():
+    seed()  # 随机初始化每个进程的种子
+
+def combine_metrics(results):
+    # 初始化组合后的指标
+    combined = {
+        'blue_wins': 0,
+        'red_wins': 0,
+        'timeouts': 0,
+        'rewards': [],
+        'episode_lengths': [],
+        'blue_missile_hit': {'aim1': 0, 'aim2': 0},
+        'red_missile_hit': {'aim1r': 0, 'aim2r': 0},
+        'action_distribution': np.zeros(49)
+    }
+    
+    # 累加各个进程的结果
+    total_episodes = 0
+    for res in results:
+        combined['blue_wins'] += res['blue_wins']
+        combined['red_wins'] += res['red_wins']
+        combined['timeouts'] += res['timeouts']
+        combined['rewards'].extend(res.get('rewards', []))
+        combined['episode_lengths'].extend(res.get('episode_lengths', []))
+        
+        # 累加导弹命中数据
+        combined['blue_missile_hit']['aim1'] += res['blue_missile_hit']['aim1']
+        combined['blue_missile_hit']['aim2'] += res['blue_missile_hit']['aim2']
+        combined['red_missile_hit']['aim1r'] += res['red_missile_hit']['aim1r']
+        combined['red_missile_hit']['aim2r'] += res['red_missile_hit']['aim2r']
+        
+        # 累加动作分布
+        combined['action_distribution'] += res['action_distribution'] * np.sum(res['action_distribution'])
+        
+        # 计算总回合数
+        total_episodes += res['blue_wins'] + res['red_wins'] + res['timeouts']
+    
+    # 计算综合指标
+    combined['win_rate'] = combined['blue_wins'] / total_episodes if total_episodes > 0 else 0
+    combined['average_reward'] = np.mean(combined['rewards']) if combined['rewards'] else 0
+    combined['average_episode_length'] = np.mean(combined['episode_lengths']) if combined['episode_lengths'] else 0
+    
+    # 归一化动作分布
+    if np.sum(combined['action_distribution']) > 0:
+        combined['action_distribution'] = combined['action_distribution'] / np.sum(combined['action_distribution'])
+    
+    return combined
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-m", "--model", type=str, default="jsb_gym/logs/RL/Dog/Dog500.pth", 
                         help="训练好的模型路径")
-    parser.add_argument("-n", "--num_episodes", type=int, default=500, 
+    parser.add_argument("-n", "--num_episodes", type=int, default=20, 
                         help="测试回合数")
     parser.add_argument("-v", "--visualize", action='store_true', 
                         help="是否在FlightGear中可视化")
+    parser.add_argument("-c", "--cores", type=int, default=10,
+                        help="并行测试的CPU核心数")
     args = parser.parse_args()
     
-    # 运行测试
-    metrics = test_model(args.model, args.num_episodes, args.visualize)
+    # 使用正确的参数顺序调用
+    metrics = parallel_test_model(args.model, args.num_episodes, args.cores)
     
     # 可视化结果
     visualize_metrics(metrics)
