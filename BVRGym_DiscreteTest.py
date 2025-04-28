@@ -13,6 +13,9 @@ from jsb_gym.RL.discrete_actor import DiscretePPO
 from jsb_gym.environmets.config import BVRGym_PPODog
 from jsb_gym.TAU.config import aim_dog_BVRGym, f16_dog_BVRGym
 
+# 配置matplotlib使用英文
+plt.rcParams['font.family'] = 'DejaVu Sans'
+
 # 保留与训练脚本一致的枚举和离散动作映射
 class Maneuvers(Enum):
     Evasive = 0
@@ -75,13 +78,14 @@ def test_model(model_path, num_episodes=100, visualize=False):
     args = {
         'track': 'Dog',
         'vizualize': visualize,
-        'cpu_cores': 10,
+        'cpu_cores': 1,  # 降低为1以避免资源竞争
         'discrete_actions': True  # 使用离散动作空间
     }
     
     # 创建环境
     env = bvrdog.BVRDog(BVRGym_PPODog, args, aim_dog_BVRGym, f16_dog_BVRGym)
-    # env.sim_time_sec_max = 60 * 16
+    # 设置较短的最大模拟时间
+    env.sim_time_sec_max = 600  # 10分钟模拟时间上限
     state_dim = env.observation_space
     
     # 创建动作映射器
@@ -108,6 +112,7 @@ def test_model(model_path, num_episodes=100, visualize=False):
     blue_wins = 0
     red_wins = 0
     timeouts = 0
+    both_dead = 0  # 新增：双方都阵亡的计数
     
     # 记录导弹命中统计
     blue_missile_hit = {'aim1': 0, 'aim2': 0}
@@ -116,30 +121,71 @@ def test_model(model_path, num_episodes=100, visualize=False):
     # 记录动作分布
     action_counts = np.zeros(action_dim)
     
-    # 创建文件来记录状态动作对
-    all_sa_pairs_file = open('all_state_action_pairs.txt', 'w')
-    win_sa_pairs_file = open('win_state_action_pairs.txt', 'w')
+    # 创建带有进程ID的文件名以避免冲突
+    proc_id = np.random.randint(10000)
+    all_sa_pairs_file = open(f'all_state_action_pairs_{proc_id}.txt', 'w')
+    win_sa_pairs_file = open(f'win_state_action_pairs_{proc_id}.txt', 'w')
     
     # 测试循环
     maneuver = Maneuvers.Evasive
     
-    for ep in tqdm(range(num_episodes), desc="测试进度"):
-        action = np.zeros(3)
+    for ep in tqdm(range(num_episodes), desc="Testing Progress"):
+        print(f"\nStarting episode {ep+1}/{num_episodes}")
+        
+        # 强制完全重置环境
+        try:
+            env.close()  # 尝试关闭环境以确保完全重置
+        except:
+            pass
+            
+        env = bvrdog.BVRDog(BVRGym_PPODog, args, aim_dog_BVRGym, f16_dog_BVRGym)
+        env.sim_time_sec_max = 600  # 重新设置时间限制
         
         # 初始化环境
         state = env.reset()
+        env.f16_alive = True
+        env.f16r_alive = True
+        env.reward_max_time = False
+        
+        # 重置导弹命中状态
+        for missile in ['aim1', 'aim2']:
+            if missile in env.aim_block:
+                env.aim_block[missile].target_hit = False
+        for missile in ['aim1r', 'aim2r']:
+            if missile in env.aimr_block:
+                env.aimr_block[missile].target_hit = False
+        
+        action = np.zeros(3)
         action[2] = 0.0  # 固定推力为0以避免飞机坠毁
         
         done = False
         episode_reward = 0
         episode_length = 0
+        stagnation_counter = 0  # 检测状态停滞的计数器
+        last_state = None
         
         # 记录当前回合的状态动作对
         episode_sa_pairs = []
         
+        # 设置回合最大步数，防止无限循环
+        max_steps = 1000  # 降低最大步数以加快测试
+        
         # 单个回合循环
-        while not done:
-            # 选择动作（不需要Memory，因为只是测试）
+        while not done and episode_length < max_steps:
+            # 检测状态是否停滞
+            if last_state is not None and np.array_equal(state, last_state):
+                stagnation_counter += 1
+                if stagnation_counter > 50:  # 如果连续50步状态不变，强制结束
+                    print(f"Episode {ep+1}: State stagnation detected, forcing termination")
+                    done = True
+                    timeouts += 1
+                    break
+            else:
+                stagnation_counter = 0
+                
+            last_state = state.copy()
+            
+            # 选择动作
             state_tensor = torch.FloatTensor(state)
             with torch.no_grad():
                 action_probs = ppo.policy_old(state_tensor)
@@ -156,36 +202,78 @@ def test_model(model_path, num_episodes=100, visualize=False):
             }
             episode_sa_pairs.append(sa_pair)
             
-            # 记录到全局文件，只包含状态和动作，以空格分隔
+            # 记录到全局文件
             state_str = ' '.join(map(str, state.tolist()))
             all_sa_pairs_file.write(f"{state_str} {discrete_action}\n")
             
             # 转换为连续动作
             action = action_mapper.discrete_to_continuous(discrete_action, fixed_thrust=0.0)
             
+            # 在采取动作前检查飞机存活状态
+            if not env.f16_alive and not env.f16r_alive:
+                print(f"Episode {ep+1}: Both aircraft dead detected at step {episode_length}")
+                done = True
+                both_dead += 1
+                break
+                
             # 执行步骤
-            next_state, reward, done, info = env.step(action, action_type=maneuver.value, blue_armed=True, red_armed=True)
+            try:
+                next_state, reward, done, info = env.step(action, action_type=maneuver.value, blue_armed=True, red_armed=True)
+                
+                # 立即检查环境是否结束回合
+                if not env.f16_alive or not env.f16r_alive or env.reward_max_time:
+                    done = True
+            except Exception as e:
+                print(f"Episode {ep+1} error at step {episode_length}: {str(e)}")
+                done = True
+                timeouts += 1
+                break
             
             # 更新状态和累积奖励
             state = next_state
             episode_reward += reward
             episode_length += 1
+            
+            # 检查是否有飞机被击落
+            if not env.f16_alive or not env.f16r_alive:
+                print(f"Episode {ep+1} at step {episode_length}: Aircraft shot down: Blue alive={env.f16_alive}, Red alive={env.f16r_alive}")
+                done = True
+            
+            # 如果回合持续太长，强制结束
+            if episode_length >= max_steps:
+                print(f"Episode {ep+1} reached max steps {max_steps}, forcing termination")
+                done = True
+                timeouts += 1
         
         # 记录回合结果
         rewards.append(episode_reward)
         episode_lengths.append(episode_length)
         
-        # 分析结束原因
+        # 分析结束原因并打印详细信息
+        outcome = "Unknown"
         if env.reward_max_time:
             timeouts += 1
+            outcome = "Timeout"
         elif env.f16_alive and not env.f16r_alive:
             blue_wins += 1
+            outcome = "Blue win"
             # 蓝方获胜，记录这个回合的状态动作对到胜利文件
             for sa_pair in episode_sa_pairs:
                 state_str = ' '.join(map(str, sa_pair['state']))
                 win_sa_pairs_file.write(f"{state_str} {sa_pair['action']}\n")
         elif not env.f16_alive and env.f16r_alive:
             red_wins += 1
+            outcome = "Red win"
+        elif not env.f16_alive and not env.f16r_alive:
+            # 同归于尽的情况
+            both_dead += 1
+            outcome = "Both dead"
+        
+        # 打印每回合的详细结果
+        print(f"Episode {ep+1} result: {outcome}, length: {episode_length}, reward: {episode_reward:.2f}")
+        print(f"Blue alive: {env.f16_alive}, Red alive: {env.f16r_alive}, Timeout: {env.reward_max_time}")
+        print(f"Blue missiles hit: aim1={env.aim_block['aim1'].target_hit}, aim2={env.aim_block['aim2'].target_hit}")
+        print(f"Red missiles hit: aim1r={env.aimr_block['aim1r'].target_hit}, aim2r={env.aimr_block['aim2r'].target_hit}")
         
         # 记录导弹命中情况
         if env.aim_block['aim1'].target_hit:
@@ -196,15 +284,23 @@ def test_model(model_path, num_episodes=100, visualize=False):
             red_missile_hit['aim1r'] += 1
         if env.aimr_block['aim2r'].target_hit:
             red_missile_hit['aim2r'] += 1
-        state = env.reset()
+        
+        # 尝试完全关闭环境
+        try:
+            env.close()
+        except:
+            pass
     
     # 关闭文件
     all_sa_pairs_file.close()
     win_sa_pairs_file.close()
     
-    '''每行包含一个状态向量和对应的动作，以空格分隔'''
-    print(f"所有状态动作对已保存到 all_state_action_pairs.txt")
-    print(f"获胜状态动作对已保存到 win_state_action_pairs.txt")
+    # 打印测试结果摘要
+    print(f"\nTest completed {num_episodes} episodes: Blue wins {blue_wins}, Red wins {red_wins}, Timeouts {timeouts}, Both dead {both_dead}")
+    print(f"Blue win rate: {blue_wins/num_episodes*100:.2f}%, Red win rate: {red_wins/num_episodes*100:.2f}%")
+    print(f"Average episode length: {np.mean(episode_lengths):.2f} steps, Average reward: {np.mean(rewards):.2f}")
+    print(f"Blue missiles hit: aim1={blue_missile_hit['aim1']}, aim2={blue_missile_hit['aim2']}")
+    print(f"Red missiles hit: aim1r={red_missile_hit['aim1r']}, aim2r={red_missile_hit['aim2r']}")
        
     # 计算综合指标
     win_rate = blue_wins / num_episodes
@@ -217,11 +313,12 @@ def test_model(model_path, num_episodes=100, visualize=False):
         'blue_wins': blue_wins,
         'red_wins': red_wins,
         'timeouts': timeouts,
+        'both_dead': both_dead,  # 新增：记录双方都阵亡的情况
         'average_reward': average_reward,
         'average_episode_length': average_episode_length,
         'blue_missile_hit': blue_missile_hit,
         'red_missile_hit': red_missile_hit,
-        'action_distribution': action_counts / np.sum(action_counts),
+        'action_distribution': action_counts / np.sum(action_counts) if np.sum(action_counts) > 0 else np.zeros(action_dim),
         'rewards': rewards,
         'episode_lengths': episode_lengths
     }
@@ -230,15 +327,17 @@ def test_model(model_path, num_episodes=100, visualize=False):
 
 def visualize_metrics(metrics):
     """可视化测试指标"""
-    print("\n===== 模型性能指标 =====")
-    print(f"蓝方胜率: {metrics['win_rate']*100:.2f}%")
-    print(f"蓝方赢得回合: {metrics['blue_wins']}")
-    print(f"红方赢得回合: {metrics['red_wins']}")
-    print(f"超时回合: {metrics['timeouts']}")
-    print(f"平均奖励: {metrics['average_reward']:.4f}")
-    print(f"平均回合长度: {metrics['average_episode_length']:.2f}")
-    print(f"蓝方导弹命中率: aim1={metrics['blue_missile_hit']['aim1']}, aim2={metrics['blue_missile_hit']['aim2']}")
-    print(f"红方导弹命中率: aim1r={metrics['red_missile_hit']['aim1r']}, aim2r={metrics['red_missile_hit']['aim2r']}")
+    print("\n===== Model Performance Metrics =====")
+    print(f"Blue win rate: {metrics['win_rate']*100:.2f}%")
+    print(f"Blue wins: {metrics['blue_wins']}")
+    print(f"Red wins: {metrics['red_wins']}")
+    print(f"Timeouts: {metrics['timeouts']}")
+    if 'both_dead' in metrics:
+        print(f"Both dead: {metrics['both_dead']}")
+    print(f"Average reward: {metrics['average_reward']:.4f}")
+    print(f"Average episode length: {metrics['average_episode_length']:.2f}")
+    print(f"Blue missile hits: aim1={metrics['blue_missile_hit']['aim1']}, aim2={metrics['blue_missile_hit']['aim2']}")
+    print(f"Red missile hits: aim1r={metrics['red_missile_hit']['aim1r']}, aim2r={metrics['red_missile_hit']['aim2r']}")
     
     # 可视化动作分布
     plt.figure(figsize=(10, 8))
@@ -258,6 +357,12 @@ def visualize_metrics(metrics):
     sizes = [metrics['blue_wins'], metrics['red_wins'], metrics['timeouts']]
     colors = ['blue', 'red', 'gray']
     
+    # 如果有双方同归于尽的情况，添加到饼图中
+    if 'both_dead' in metrics and metrics['both_dead'] > 0:
+        labels.append('both dead')
+        sizes.append(metrics['both_dead'])
+        colors.append('purple')
+    
     plt.figure(figsize=(8, 8))
     plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
     plt.axis('equal')
@@ -268,21 +373,35 @@ def visualize_metrics(metrics):
 def parallel_test_model(model_path, num_episodes=100, num_cores=4):
     # 确保num_cores至少为1
     num_cores = max(1, num_cores)
+    
+    # 创建进程池，每个进程使用不同的随机种子
     pool = multiprocessing.Pool(processes=num_cores, initializer=set_seeds)
     
     # 分配测试任务
     episodes_per_core = num_episodes // num_cores
-    input_data = [(model_path, episodes_per_core) for _ in range(num_cores)]
+    # 确保最后一个进程处理剩余的回合数
+    remaining_episodes = num_episodes % num_cores
+    
+    input_data = []
+    for i in range(num_cores):
+        # 最后一个进程处理剩余回合
+        ep_count = episodes_per_core + (remaining_episodes if i == num_cores-1 else 0)
+        input_data.append((model_path, ep_count, i))  # 添加进程ID作为额外参数
     
     # 并行执行测试
+    print(f"Starting {num_cores} workers, each testing {episodes_per_core} episodes")
     results = pool.map(test_model_worker, input_data)
+    
+    # 关闭进程池
+    pool.close()
+    pool.join()
     
     # 整合结果
     combined_metrics = combine_metrics(results)
     return combined_metrics
 
 def test_model_worker(args):
-    model_path, episodes = args
+    model_path, episodes, worker_id = args
     
     # 使用与训练相同的环境配置
     env_args = {
@@ -292,8 +411,10 @@ def test_model_worker(args):
         'discrete_actions': True
     }
     
-    # 设置独立随机种子
-    set_seeds(np.random.randint(10000))
+    # 设置特定的随机种子，确保不同进程使用不同的种子
+    worker_seed = 42 + worker_id * 1000
+    set_seeds(worker_seed)
+    print(f"Worker {worker_id} using seed {worker_seed} starting test of {episodes} episodes")
     
     # 调用test_model函数并返回其结果
     metrics = test_model(model_path, episodes, visualize=False)
@@ -350,13 +471,13 @@ def combine_metrics(results):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-m", "--model", type=str, default="jsb_gym/logs/RL/Dog/Dog500.pth", 
-                        help="训练好的模型路径")
-    parser.add_argument("-n", "--num_episodes", type=int, default=20, 
-                        help="测试回合数")
+                        help="Path to trained model")
+    parser.add_argument("-n", "--num_episodes", type=int, default=50, 
+                        help="Number of test episodes")
     parser.add_argument("-v", "--visualize", action='store_true', 
-                        help="是否在FlightGear中可视化")
+                        help="Enable visualization in FlightGear")
     parser.add_argument("-c", "--cores", type=int, default=10,
-                        help="并行测试的CPU核心数")
+                        help="Number of CPU cores for parallel testing")
     args = parser.parse_args()
     
     # 使用正确的参数顺序调用
@@ -365,4 +486,4 @@ if __name__ == '__main__':
     # 可视化结果
     visualize_metrics(metrics)
     
-    print("\n测试完成! 结果已保存为图片文件。") 
+    print("\nTest complete! Results saved as image files.") 
