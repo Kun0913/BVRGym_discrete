@@ -94,7 +94,7 @@ def runPPO(args):
         if i_episode % 500 == 0:
             # save 
             torch.save(ppo.policy.state_dict(), torch_save + 'Dog'+str(i_episode) + '.pth')
-        if i_episode % 10 == 0:  # 每10轮迭代
+        if i_episode % 500 == 0:  # 每10轮迭代
             pool.close()
             pool.join()
             pool = multiprocessing.Pool(processes=int(args['cpu_cores']), initializer=init_pool)
