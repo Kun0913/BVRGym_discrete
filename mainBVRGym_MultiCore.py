@@ -94,6 +94,10 @@ def runPPO(args):
         if i_episode % 500 == 0:
             # save 
             torch.save(ppo.policy.state_dict(), torch_save + 'Dog'+str(i_episode) + '.pth')
+        if i_episode % 10 == 0:  # 每10轮迭代
+            pool.close()
+            pool.join()
+            pool = multiprocessing.Pool(processes=int(args['cpu_cores']), initializer=init_pool)
 
     pool.close()
     pool.join()
@@ -196,7 +200,7 @@ def train(args):
     rewards = [i for i in memory.rewards]
     #print(rewards)
     is_terminals = [i for i in memory.is_terminals]     
-    return [actions, states, logprobs, rewards, is_terminals, running_reward, tb_obs]
+    return [np.array(actions), np.array(states), np.array(logprobs), rewards, is_terminals, running_reward, tb_obs]
 
 
 def get_tb_obs_dog(env):
