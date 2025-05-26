@@ -21,8 +21,7 @@ from gym.spaces import Discrete
 from jsb_gym.environmets.config import BVRGym_PPODog
 from jsb_gym.TAU.config import aim_dog_BVRGym, f16_dog_BVRGym
 from enum import Enum
-from real_time_visualizer import init_visualizer, update_visualization, start_visualization
-from battle_logger import BattleLogger, create_post_analysis_visualizer
+
 
 from fuzzy_model import FuzzyClassifier
 
@@ -44,7 +43,7 @@ class DiscreteActionMapping:
         self.altitude_values = [-1.0, -0.67, -0.33, 0.0, 0.33, 0.67, 1.0]
         
     def discrete_to_continuous(self, discrete_action, fixed_thrust=0.0):
-        """将离散动作转换为连续动作 [heading, altitude, thrust]"""
+        """Convert discrete action to continuous action [heading, altitude, thrust]"""
         # 计算行列索引
         row = discrete_action // 7  # 高度索引
         col = discrete_action % 7   # 方向索引
@@ -57,14 +56,11 @@ class DiscreteActionMapping:
 
 def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
     """
-    使用模糊分类器在Dog场景中进行决策测试
+    Test decision making using fuzzy classifier in Dog scenario
     """
     # 设置随机种子
     np.random.seed(42)
     random.seed(42)
-    
-    # 初始化日志记录器
-    logger = BattleLogger(f"battle_log_{int(time.time())}.csv")
     
     # 加载模型和预处理器
     fuzzy_classifier = joblib.load(os.path.join(model_dir, 'fuzzy_classifier.pkl'))
@@ -72,15 +68,7 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
     scaler = joblib.load(os.path.join(model_dir, 'scaler.pkl'))
     label_encoder = joblib.load(os.path.join(model_dir, 'label_encoder.pkl'))
     
-    print("成功加载模型和预处理器")
-    
-    # 初始化可视化器
-    if visualize:
-        vis = init_visualizer()
-        # 在单独线程中启动可视化
-        vis_thread = threading.Thread(target=start_visualization, daemon=True)
-        vis_thread.start()
-        time.sleep(2)  # 等待可视化窗口启动
+    print("Successfully loaded model and preprocessors")
     
     # 设置环境参数
     args = {
@@ -116,8 +104,8 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
     # 测试循环
     maneuver = Maneuvers.Evasive
     
-    for ep in tqdm(range(num_episodes), desc="模糊分类器测试进度"):
-        print(f"\n开始回合 {ep+1}/{num_episodes}")
+    for ep in tqdm(range(num_episodes), desc="Fuzzy classifier testing progress"):
+        print(f"\nStarting episode {ep+1}/{num_episodes}")
         
         # 强制完全重置环境
         try:
@@ -160,7 +148,7 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
             if last_state is not None and np.array_equal(state, last_state):
                 stagnation_counter += 1
                 if stagnation_counter > 50:
-                    print(f"回合 {ep+1}: 检测到状态停滞，强制终止")
+                    print(f"Episode {ep+1}: Detected state stagnation, forcing termination")
                     done = True
                     timeouts += 1
                     break
@@ -190,7 +178,7 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
             
             # 在采取动作前检查飞机存活状态
             if not env.f16_alive and not env.f16r_alive:
-                print(f"回合 {ep+1}: 在步骤 {episode_length} 检测到双方飞机阵亡")
+                print(f"Episode {ep+1}: Detected both aircraft destroyed at step {episode_length}")
                 done = True
                 both_dead += 1
                 break
@@ -203,7 +191,7 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
                 if not env.f16_alive or not env.f16r_alive or env.reward_max_time:
                     done = True
             except Exception as e:
-                print(f"回合 {ep+1} 在步骤 {episode_length} 出错: {str(e)}")
+                print(f"Episode {ep+1} error at step {episode_length}: {str(e)}")
                 done = True
                 timeouts += 1
                 break
@@ -215,86 +203,37 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
             
             # 检查是否有飞机被击落
             if not env.f16_alive or not env.f16r_alive:
-                print(f"回合 {ep+1} 在步骤 {episode_length}: 飞机被击落: 蓝方存活={env.f16_alive}, 红方存活={env.f16r_alive}")
+                print(f"Episode {ep+1} at step {episode_length}: Aircraft shot down: Blue alive={env.f16_alive}, Red alive={env.f16r_alive}")
                 done = True
             
             # 如果回合持续太长，强制结束
             if episode_length >= max_steps:
-                print(f"回合 {ep+1} 达到最大步数 {max_steps}，强制终止")
+                print(f"Episode {ep+1} reached maximum steps {max_steps}, forcing termination")
                 done = True
                 timeouts += 1
-            
-            # 更新可视化
-            if visualize:
-                # 准备导弹信息
-                missiles = {}
-                missiles.update(env.aim_block)
-                missiles.update(env.aimr_block)
-                
-                # 准备状态信息
-                info_text = f"回合: {ep+1}/{num_episodes}\n"
-                info_text += f"步数: {episode_length}\n"
-                info_text += f"蓝方存活: {env.f16_alive}\n"
-                info_text += f"红方存活: {env.f16r_alive}\n"
-                info_text += f"当前奖励: {episode_reward:.2f}"
-                
-                # 更新可视化
-                update_visualization(env.f16, env.f16r, missiles, info_text)
-                
-                # 控制更新频率
-                time.sleep(0.05)
-            
-            # 记录战斗数据（每5步记录一次，减少开销）
-            if episode_length % 5 == 0:
-                try:
-                    missiles = {}
-                    missiles.update(env.aim_block)
-                    missiles.update(env.aimr_block)
-                    
-                    logger.log_step(
-                        episode=ep+1,
-                        step=episode_length,
-                        blue_aircraft=env.f16,
-                        red_aircraft=env.f16r,
-                        missiles=missiles,
-                        episode_reward=episode_reward,
-                        blue_alive=env.f16_alive,
-                        red_alive=env.f16r_alive,
-                        info=f"动作:{discrete_action}"
-                    )
-                    
-                    # 每50步打印一次摘要
-                    if episode_length % 50 == 0:
-                        logger.print_summary(
-                            ep+1, episode_length, env.f16, env.f16r,
-                            env.f16_alive, env.f16r_alive, episode_reward
-                        )
-                        
-                except Exception as e:
-                    print(f"日志记录失败: {e}")
         
         # 记录回合结果
         rewards.append(episode_reward)
         episode_lengths.append(episode_length)
         
         # 分析结束原因
-        outcome = "未知"
+        outcome = "Unknown"
         if env.reward_max_time:
             timeouts += 1
-            outcome = "超时"
+            outcome = "Timeout"
         elif env.f16_alive and not env.f16r_alive:
             blue_wins += 1
-            outcome = "蓝方胜利"
+            outcome = "Blue wins"
         elif not env.f16_alive and env.f16r_alive:
             red_wins += 1
-            outcome = "红方胜利"
+            outcome = "Red wins"
         elif not env.f16_alive and not env.f16r_alive:
             both_dead += 1
-            outcome = "双方阵亡"
+            outcome = "Both dead"
         
         # 打印每回合的详细结果
-        print(f"回合 {ep+1} 结果: {outcome}, 长度: {episode_length}, 奖励: {episode_reward:.2f}")
-        print(f"蓝方存活: {env.f16_alive}, 红方存活: {env.f16r_alive}, 超时: {env.reward_max_time}")
+        print(f"Episode {ep+1} result: {outcome}, length: {episode_length}, reward: {episode_reward:.2f}")
+        print(f"Blue alive: {env.f16_alive}, Red alive: {env.f16r_alive}, timeout: {env.reward_max_time}")
         
         # 记录导弹命中情况
         if env.aim_block['aim1'].target_hit:
@@ -305,84 +244,58 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
             red_missile_hit['aim1r'] += 1
         if env.aimr_block['aim2r'].target_hit:
             red_missile_hit['aim2r'] += 1
-        
-        # 记录回合结束状态
-        try:
-            missiles = {}
-            missiles.update(env.aim_block)
-            missiles.update(env.aimr_block)
-            
-            logger.log_step(
-                episode=ep+1,
-                step=episode_length,
-                blue_aircraft=env.f16,
-                red_aircraft=env.f16r,
-                missiles=missiles,
-                episode_reward=episode_reward,
-                blue_alive=env.f16_alive,
-                red_alive=env.f16r_alive,
-                info=f"回合结束:{outcome}"
-            )
-        except:
-            pass
-        # time.sleep(10)
     
     # 打印测试结果摘要
-    print(f"\n完成 {num_episodes} 回合测试: 蓝方胜 {blue_wins}, 红方胜 {red_wins}, 超时 {timeouts}, 双方阵亡 {both_dead}")
-    print(f"蓝方胜率: {blue_wins/num_episodes*100:.2f}%, 红方胜率: {red_wins/num_episodes*100:.2f}%")
-    print(f"平均回合长度: {np.mean(episode_lengths):.2f} 步, 平均奖励: {np.mean(rewards):.2f}")
+    print(f"\nCompleted {num_episodes} episode test: Blue wins {blue_wins}, Red wins {red_wins}, Timeouts {timeouts}, Both dead {both_dead}")
+    print(f"Blue win rate: {blue_wins/num_episodes*100:.2f}%, Red win rate: {red_wins/num_episodes*100:.2f}%")
+    print(f"Average episode length: {np.mean(episode_lengths):.2f} steps, Average reward: {np.mean(rewards):.2f}")
     
     # 可视化结果
     visualize_fuzzy_results(blue_wins, red_wins, timeouts, both_dead, action_counts, action_mapper)
     
-    # 生成事后分析
-    if visualize:
-        print("\n生成战斗分析图...")
-        create_post_analysis_visualizer(logger.log_file)
-    
     return blue_wins, red_wins, timeouts, both_dead
 
 def visualize_fuzzy_results(blue_wins, red_wins, timeouts, both_dead, action_counts, action_mapper):
-    """可视化模糊分类器的测试结果"""
+    """Visualize fuzzy classifier test results"""
     # 可视化动作分布
     plt.figure(figsize=(10, 8))
     action_dist = action_counts / np.sum(action_counts) if np.sum(action_counts) > 0 else np.zeros_like(action_counts)
     action_dist = action_dist.reshape(7, 7)
     plt.imshow(action_dist, cmap='hot', interpolation='nearest')
-    plt.colorbar(label='动作选择频率')
-    plt.title('模糊分类器离散动作分布热图')
-    plt.xlabel('航向动作')
-    plt.ylabel('高度动作')
+    plt.colorbar(label='Action selection frequency')
+    plt.title('Fuzzy classifier discrete action distribution heatmap')
+    plt.xlabel('Heading action')
+    plt.ylabel('Altitude action')
     plt.xticks(range(7), [f"{val:.2f}" for val in action_mapper.heading_values])
     plt.yticks(range(7), [f"{val:.2f}" for val in action_mapper.altitude_values[::-1]])
     plt.savefig('fuzzy_action_distribution.png')
     plt.close()
     
     # 创建性能饼图
-    labels = ['蓝方胜', '红方胜', '超时']
+    labels = ['Blue wins', 'Red wins', 'Timeout']
     sizes = [blue_wins, red_wins, timeouts]
     colors = ['blue', 'red', 'gray']
     
     if both_dead > 0:
-        labels.append('双方阵亡')
+        labels.append('Both dead')
         sizes.append(both_dead)
         colors.append('purple')
     
     plt.figure(figsize=(8, 8))
     plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
     plt.axis('equal')
-    plt.title('模糊分类器测试结果分布')
+    plt.title('Fuzzy classifier test results distribution')
     plt.savefig('fuzzy_test_results_pie.png')
     plt.close()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--model_dir", type=str, default="dbscan_saved_model",
-                       help="保存模型和预处理器的目录")
+                       help="Directory to save model and preprocessors")
     parser.add_argument("-n", "--num_episodes", type=int, default=50,
-                       help="测试回合数")
+                       help="Number of test episodes")
     parser.add_argument("-v", "--visualize", action='store_true',
-                       help="启用FlightGear可视化")
+                       help="Enable FlightGear visualization")
     args = parser.parse_args()
     
     # 调用测试函数
