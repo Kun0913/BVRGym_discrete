@@ -58,16 +58,16 @@ def main():
     data = pd.read_csv(data_file_path, header=None, delim_whitespace=True)
 
     # 消除重复值，并输出消除前后的数据条数
-    print("消除重复值前数据条数:", len(data))
+    print("Data count before removing duplicates:", len(data))
     data.drop_duplicates(inplace=True)
-    print("消除重复值后数据条数:", len(data))
+    print("Data count after removing duplicates:", len(data))
 
     X = data.iloc[:, :-1].values
     y = data.iloc[:, -1].values
     print(X.shape)
-    print("共有多少个不同的动作标签:")
+    print("Number of different action labels:")
     print(len(np.unique(y)))
-    print("每个动作标签对应的样本数量:")
+    print("Sample count for each action label:")
     print(pd.Series(y).value_counts())
 
     # 去除数据集中样本数量少于n的标签对应的数据
@@ -84,7 +84,7 @@ def main():
     y = y[mask]
 
     # 验证X和y的长度是否匹配
-    print(f"过滤后的样本数: {X.shape[0]}")
+    print(f"Number of samples after filtering: {X.shape[0]}")
 
     # 对标签进行编码
     label_encoder = LabelEncoder()
@@ -103,7 +103,7 @@ def main():
     # 可选的ICA降维
     dimensionality_reducer = None
     if use_ica:
-        print(f"\n使用ICA进行降维，目标维度: {ica_components}")
+        print(f"\nUsing ICA for dimensionality reduction, target dimensions: {ica_components}")
         from sklearn.decomposition import FastICA
         dimensionality_reducer = FastICA(n_components=ica_components, random_state=13, max_iter=500)
         X = dimensionality_reducer.fit_transform(X)
@@ -118,17 +118,27 @@ def main():
                          'heading_sin', 'heading_cos', 
                          'aim_dis', 'aim_azim_h', 'aim_azim_v']
 
-        print("混合矩阵（每列对应一个ICA成分的物理意义）:")
+        print("Mixing matrix (each column corresponds to the physical meaning of an ICA component):")
         for comp_idx in range(mixing_matrix.shape[1]):
             print(f"\nComponent {comp_idx}:")
             for feat_idx, weight in enumerate(mixing_matrix[:, comp_idx]):
                 print(f"  {feature_names[feat_idx]:<6}: {weight:.3f}")
     else:
-        print("\n不使用降维，直接使用原始特征")
-        print(f"特征维度: {X.shape[1]}")
+        print("\nNot using dimensionality reduction, using original features directly")
+        print(f"Feature dimensions: {X.shape[1]}")
 
+    # 设置特征名称
+    if use_ica:
+        feature_names = [f'ICA_Component_{i}' for i in range(ica_components)]
+    else:
+        # 原始特征名称
+        feature_names = ['enemy_distance', 'enemy_azimuth_h', 'enemy_azimuth_v', 
+                        'own_heading_sin', 'own_heading_cos', 
+                        'missile_distance', 'missile_azimuth_h', 'missile_azimuth_v']
+    
     # 使用交叉验证来评估分类器的准确率
     fuzzy_classifier = FuzzyClassifier(eps=0.5, min_samples=5, num_mfs=3)
+    fuzzy_classifier.set_feature_names(feature_names)
 
     from sklearn.model_selection import train_test_split
     # 划分训练集和验证集
@@ -139,7 +149,7 @@ def main():
     y_pred, _ = fuzzy_classifier.predict(X_val)
 
     # 输出分类报告
-    print("\n分类报告:")
+    print("\nClassification Report:")
     print(classification_report(y_val, y_pred))
 
     # 保存训练好的模型
@@ -159,13 +169,35 @@ def main():
         'use_ica': use_ica,
         'ica_components': ica_components if use_ica else None,
         'original_features': X.shape[1] if not use_ica else scaler.n_features_in_,
-        'final_features': X.shape[1]
+        'final_features': X.shape[1],
+        'feature_names': feature_names
     }
     with open(f'{model_save_dir}/config.json', 'w') as f:
         json.dump(config, f, indent=2)
     
-    print(f"\n模型和预处理器已保存到 {model_save_dir} 目录")
-    print(f"配置信息已保存到 {model_save_dir}/config.json")
+    # 保存模糊规则到文件
+    rules_file = f'{model_save_dir}/fuzzy_rules.json'
+    fuzzy_classifier.save_rules_to_file(rules_file)
+    
+    # 生成规则报告
+    report_file = f'{model_save_dir}/fuzzy_rules_report.txt'
+    fuzzy_classifier.generate_rule_report(report_file)
+    
+    # 可视化模糊规则
+    plots_dir = f'{model_save_dir}/fuzzy_rules_plots'
+    fuzzy_classifier.visualize_rules(plots_dir)
+    
+    # 打印规则摘要
+    summary = fuzzy_classifier.get_rule_summary()
+    print(f"\nFuzzy Rules Summary:")
+    print(f"  Total rules: {summary['total_rules']}")
+    print(f"  Rules by label: {summary['rules_by_label']}")
+    
+    print(f"\nModel and preprocessors saved to {model_save_dir} directory")
+    print(f"Configuration saved to {model_save_dir}/config.json")
+    print(f"Fuzzy rules saved to {rules_file}")
+    print(f"Rule report saved to {report_file}")
+    print(f"Rule visualization plots saved to {plots_dir}")
 
 if __name__ == '__main__':
     main()

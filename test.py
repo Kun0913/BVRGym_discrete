@@ -268,6 +268,31 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
     # 可视化结果
     visualize_fuzzy_results(blue_wins, red_wins, timeouts, both_dead, action_counts, action_mapper)
     
+    # 保存更新后的规则使用统计
+    rules_file = os.path.join(model_dir, 'fuzzy_rules_updated.json')
+    fuzzy_classifier.save_rules_to_file(rules_file)
+    
+    # 生成测试后的规则使用报告
+    test_report_file = os.path.join(model_dir, 'fuzzy_rules_test_report.txt')
+    fuzzy_classifier.generate_rule_report(test_report_file)
+    
+    # 重新生成规则使用统计图
+    test_plots_dir = os.path.join(model_dir, 'fuzzy_rules_test_plots')
+    fuzzy_classifier._plot_rule_usage_statistics(test_plots_dir)
+    
+    # 打印规则使用摘要
+    summary = fuzzy_classifier.get_rule_summary()
+    print(f"\nFuzzy Rules Usage Summary:")
+    print(f"  Total rules: {summary['total_rules']}")
+    print(f"  Average usage count: {summary['average_usage']:.2f}")
+    if summary['most_used_rule']:
+        print(f"  Most used rule: Rule_{summary['most_used_rule'][0]}_{summary['most_used_rule'][1]}")
+    if summary['least_used_rule']:
+        print(f"  Least used rule: Rule_{summary['least_used_rule'][0]}_{summary['least_used_rule'][1]}")
+    
+    print(f"\nUpdated rule statistics saved to {rules_file}")
+    print(f"Test rule report saved to {test_report_file}")
+    
     return blue_wins, red_wins, timeouts, both_dead
 
 def visualize_fuzzy_results(blue_wins, red_wins, timeouts, both_dead, action_counts, action_mapper):
