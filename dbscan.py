@@ -139,6 +139,12 @@ def main():
     # 使用交叉验证来评估分类器的准确率
     fuzzy_classifier = FuzzyClassifier(eps=0.5, min_samples=5, num_mfs=3)
     fuzzy_classifier.set_feature_names(feature_names)
+    
+    # 设置预处理器和原始特征名称
+    original_feature_names = ['dis', 'azim_h', 'azim_v', 
+                             'heading_sin', 'heading_cos', 
+                             'aim_dis', 'aim_azim_h', 'aim_azim_v']
+    fuzzy_classifier.set_preprocessors(scaler, dimensionality_reducer, original_feature_names)
 
     from sklearn.model_selection import train_test_split
     # 划分训练集和验证集
@@ -170,7 +176,8 @@ def main():
         'ica_components': ica_components if use_ica else None,
         'original_features': X.shape[1] if not use_ica else scaler.n_features_in_,
         'final_features': X.shape[1],
-        'feature_names': feature_names
+        'feature_names': feature_names,
+        'original_feature_names': original_feature_names
     }
     with open(f'{model_save_dir}/config.json', 'w') as f:
         json.dump(config, f, indent=2)

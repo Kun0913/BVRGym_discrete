@@ -72,10 +72,19 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
     # 加载配置信息
     config_path = os.path.join(model_dir, 'config.json')
     use_ica = False
+    original_feature_names = None
     if os.path.exists(config_path):
         with open(config_path, 'r') as f:
             config = json.load(f)
             use_ica = config.get('use_ica', False)
+            original_feature_names = config.get('original_feature_names')
+    
+    # 设置预处理器信息到模糊分类器
+    if original_feature_names is None:
+        original_feature_names = ['dis', 'azim_h', 'azim_v', 
+                                 'heading_sin', 'heading_cos', 
+                                 'aim_dis', 'aim_azim_h', 'aim_azim_v']
+    fuzzy_classifier.set_preprocessors(scaler, dimensionality_reducer, original_feature_names)
     
     print("Successfully loaded model and preprocessors")
     print(f"Using ICA: {use_ica}")
@@ -332,7 +341,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--model_dir", type=str, default="dbscan_saved_model",
                        help="Directory to save model and preprocessors")
-    parser.add_argument("-n", "--num_episodes", type=int, default=50,
+    parser.add_argument("-n", "--num_episodes", type=int, default=5,
                        help="Number of test episodes")
     parser.add_argument("-v", "--visualize", action='store_true',
                        help="Enable FlightGear visualization")
