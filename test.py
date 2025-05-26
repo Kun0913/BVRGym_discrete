@@ -8,6 +8,7 @@ import joblib
 import os
 import time
 import threading
+import json
 
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
@@ -64,11 +65,20 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
     
     # 加载模型和预处理器
     fuzzy_classifier = joblib.load(os.path.join(model_dir, 'fuzzy_classifier.pkl'))
-    pca = joblib.load(os.path.join(model_dir, 'pca.pkl'))
+    dimensionality_reducer = joblib.load(os.path.join(model_dir, 'pca.pkl'))  # 可能是ICA或None
     scaler = joblib.load(os.path.join(model_dir, 'scaler.pkl'))
     label_encoder = joblib.load(os.path.join(model_dir, 'label_encoder.pkl'))
     
+    # 加载配置信息
+    config_path = os.path.join(model_dir, 'config.json')
+    use_ica = False
+    if os.path.exists(config_path):
+        with open(config_path, 'r') as f:
+            config = json.load(f)
+            use_ica = config.get('use_ica', False)
+    
     print("Successfully loaded model and preprocessors")
+    print(f"Using ICA: {use_ica}")
     
     # 设置环境参数
     args = {
@@ -163,9 +173,14 @@ def test_fuzzy_classifier(model_dir, num_episodes=10, visualize=False):
             
             # 2. 应用与训练相同的预处理
             state_scaled = scaler.transform(state_reshaped)  # 标准化
-            state_transformed = pca.transform(state_scaled)  # 降维
             
-            # 3. 使用模糊分类器预测动作
+            # 3. 可选的降维处理
+            if use_ica and dimensionality_reducer is not None:
+                state_transformed = dimensionality_reducer.transform(state_scaled)  # ICA降维
+            else:
+                state_transformed = state_scaled  # 不使用降维
+            
+            # 4. 使用模糊分类器预测动作
             label_map = joblib.load(os.path.join(model_dir, 'label_map.pkl'))
             discrete_action_encoded, _ = fuzzy_classifier.predict(state_transformed)
             discrete_action = label_map[discrete_action_encoded[0]]
