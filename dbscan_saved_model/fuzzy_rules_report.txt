@@ -1,0 +1,1018 @@
+================================================================================
+模糊分类器规则报告
+================================================================================
+生成时间: 2025-05-26 19:24:34
+DBSCAN参数: eps=0.5, min_samples=5
+总规则数: 22
+
+------------------------------------------------------------
+规则ID: Rule_0_0
+目标动作: 0
+聚类ID: 0
+训练样本数: 8
+使用次数: 27
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: 2.3294, 标准差: 0.1360
+    范围: [2.1542, 2.4818]
+    Low中心: 2.1934
+    Medium中心: 2.3294
+    High中心: 2.4654
+  ICA_Component_1:
+    均值: -0.1203, 标准差: 0.0505
+    范围: [-0.1706, -0.0441]
+    Low中心: -0.1708
+    Medium中心: -0.1203
+    High中心: -0.0698
+  ICA_Component_2:
+    均值: -0.4631, 标准差: 0.0425
+    范围: [-0.4898, -0.3518]
+    Low中心: -0.5056
+    Medium中心: -0.4631
+    High中心: -0.4206
+  ICA_Component_3:
+    均值: 0.5927, 标准差: 0.1221
+    范围: [0.3992, 0.7795]
+    Low中心: 0.4706
+    Medium中心: 0.5927
+    High中心: 0.7148
+  ICA_Component_4:
+    均值: 0.0654, 标准差: 0.0296
+    范围: [0.0286, 0.1282]
+    Low中心: 0.0358
+    Medium中心: 0.0654
+    High中心: 0.0951
+  ICA_Component_5:
+    均值: -0.4648, 标准差: 0.0884
+    范围: [-0.6832, -0.3682]
+    Low中心: -0.5532
+    Medium中心: -0.4648
+    High中心: -0.3765
+
+------------------------------------------------------------
+规则ID: Rule_0_1
+目标动作: 0
+聚类ID: 1
+训练样本数: 44
+使用次数: 4
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.4232, 标准差: 0.1269
+    范围: [-0.6053, -0.1497]
+    Low中心: -0.5502
+    Medium中心: -0.4232
+    High中心: -0.2963
+  ICA_Component_1:
+    均值: -0.2385, 标准差: 0.1240
+    范围: [-0.4081, -0.0380]
+    Low中心: -0.3625
+    Medium中心: -0.2385
+    High中心: -0.1145
+  ICA_Component_2:
+    均值: -0.5291, 标准差: 0.0230
+    范围: [-0.6351, -0.4730]
+    Low中心: -0.5521
+    Medium中心: -0.5291
+    High中心: -0.5061
+  ICA_Component_3:
+    均值: 0.0951, 标准差: 0.1149
+    范围: [-0.1179, 0.6689]
+    Low中心: -0.0198
+    Medium中心: 0.0951
+    High中心: 0.2100
+  ICA_Component_4:
+    均值: 0.3431, 标准差: 0.0114
+    范围: [0.3119, 0.3762]
+    Low中心: 0.3318
+    Medium中心: 0.3431
+    High中心: 0.3545
+  ICA_Component_5:
+    均值: -0.3095, 标准差: 0.0310
+    范围: [-0.4409, -0.2300]
+    Low中心: -0.3405
+    Medium中心: -0.3095
+    High中心: -0.2785
+
+------------------------------------------------------------
+规则ID: Rule_0_2
+目标动作: 0
+聚类ID: 2
+训练样本数: 10
+使用次数: 1
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: 0.3764, 标准差: 0.0407
+    范围: [0.3300, 0.4189]
+    Low中心: 0.3357
+    Medium中心: 0.3764
+    High中心: 0.4171
+  ICA_Component_1:
+    均值: 0.2507, 标准差: 0.0448
+    范围: [0.2269, 0.3806]
+    Low中心: 0.2059
+    Medium中心: 0.2507
+    High中心: 0.2956
+  ICA_Component_2:
+    均值: -0.3857, 标准差: 0.0218
+    范围: [-0.4013, -0.3416]
+    Low中心: -0.4075
+    Medium中心: -0.3857
+    High中心: -0.3638
+  ICA_Component_3:
+    均值: -0.4247, 标准差: 0.0194
+    范围: [-0.4413, -0.3761]
+    Low中心: -0.4441
+    Medium中心: -0.4247
+    High中心: -0.4053
+  ICA_Component_4:
+    均值: 0.1739, 标准差: 0.0187
+    范围: [0.1207, 0.1861]
+    Low中心: 0.1551
+    Medium中心: 0.1739
+    High中心: 0.1926
+  ICA_Component_5:
+    均值: -0.5363, 标准差: 0.0348
+    范围: [-0.6170, -0.5171]
+    Low中心: -0.5711
+    Medium中心: -0.5363
+    High中心: -0.5015
+
+------------------------------------------------------------
+规则ID: Rule_0_3
+目标动作: 0
+聚类ID: 3
+训练样本数: 7
+使用次数: 0
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.5371, 标准差: 0.0948
+    范围: [-0.6421, -0.4122]
+    Low中心: -0.6319
+    Medium中心: -0.5371
+    High中心: -0.4422
+  ICA_Component_1:
+    均值: 0.3643, 标准差: 0.2115
+    范围: [0.0129, 0.5585]
+    Low中心: 0.1528
+    Medium中心: 0.3643
+    High中心: 0.5758
+  ICA_Component_2:
+    均值: -0.2060, 标准差: 0.0914
+    范围: [-0.2825, -0.0210]
+    Low中心: -0.2974
+    Medium中心: -0.2060
+    High中心: -0.1146
+  ICA_Component_3:
+    均值: 0.5769, 标准差: 0.1425
+    范围: [0.2640, 0.7422]
+    Low中心: 0.4344
+    Medium中心: 0.5769
+    High中心: 0.7194
+  ICA_Component_4:
+    均值: -0.0951, 标准差: 0.0680
+    范围: [-0.1808, 0.0568]
+    Low中心: -0.1631
+    Medium中心: -0.0951
+    High中心: -0.0271
+  ICA_Component_5:
+    均值: 2.3067, 标准差: 0.1134
+    范围: [2.2130, 2.5359]
+    Low中心: 2.1933
+    Medium中心: 2.3067
+    High中心: 2.4201
+
+------------------------------------------------------------
+规则ID: Rule_1_0
+目标动作: 1
+聚类ID: 0
+训练样本数: 10
+使用次数: 0
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 1
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: 2.3529, 标准差: 0.1313
+    范围: [2.1542, 2.4818]
+    Low中心: 2.2216
+    Medium中心: 2.3529
+    High中心: 2.4842
+  ICA_Component_1:
+    均值: -0.1127, 标准差: 0.0506
+    范围: [-0.1706, -0.0441]
+    Low中心: -0.1633
+    Medium中心: -0.1127
+    High中心: -0.0620
+  ICA_Component_2:
+    均值: -0.4545, 标准差: 0.0482
+    范围: [-0.4898, -0.3518]
+    Low中心: -0.5027
+    Medium中心: -0.4545
+    High中心: -0.4062
+  ICA_Component_3:
+    均值: 0.6132, 标准差: 0.1238
+    范围: [0.3992, 0.7877]
+    Low中心: 0.4894
+    Medium中心: 0.6132
+    High中心: 0.7370
+  ICA_Component_4:
+    均值: 0.0698, 标准差: 0.0321
+    范围: [0.0286, 0.1282]
+    Low中心: 0.0377
+    Medium中心: 0.0698
+    High中心: 0.1019
+  ICA_Component_5:
+    均值: -0.4851, 标准差: 0.0996
+    范围: [-0.6832, -0.3682]
+    Low中心: -0.5847
+    Medium中心: -0.4851
+    High中心: -0.3854
+
+------------------------------------------------------------
+规则ID: Rule_1_1
+目标动作: 1
+聚类ID: 1
+训练样本数: 54
+使用次数: 4
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 1
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.4023, 标准差: 0.1388
+    范围: [-0.6053, -0.1045]
+    Low中心: -0.5412
+    Medium中心: -0.4023
+    High中心: -0.2635
+  ICA_Component_1:
+    均值: -0.2345, 标准差: 0.1406
+    范围: [-0.5602, 0.0348]
+    Low中心: -0.3750
+    Medium中心: -0.2345
+    High中心: -0.0939
+  ICA_Component_2:
+    均值: -0.5218, 标准差: 0.0267
+    范围: [-0.5529, -0.3722]
+    Low中心: -0.5485
+    Medium中心: -0.5218
+    High中心: -0.4952
+  ICA_Component_3:
+    均值: 0.0678, 标准差: 0.0813
+    范围: [-0.2727, 0.2251]
+    Low中心: -0.0135
+    Medium中心: 0.0678
+    High中心: 0.1491
+  ICA_Component_4:
+    均值: 0.3411, 标准差: 0.0114
+    范围: [0.2995, 0.3608]
+    Low中心: 0.3296
+    Medium中心: 0.3411
+    High中心: 0.3525
+  ICA_Component_5:
+    均值: -0.3169, 标准差: 0.0509
+    范围: [-0.6002, -0.2404]
+    Low中心: -0.3678
+    Medium中心: -0.3169
+    High中心: -0.2660
+
+------------------------------------------------------------
+规则ID: Rule_1_2
+目标动作: 1
+聚类ID: 2
+训练样本数: 12
+使用次数: 2
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 1
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: 0.3801, 标准差: 0.0381
+    范围: [0.3300, 0.4189]
+    Low中心: 0.3421
+    Medium中心: 0.3801
+    High中心: 0.4182
+  ICA_Component_1:
+    均值: 0.2686, 标准差: 0.0579
+    范围: [0.2269, 0.3806]
+    Low中心: 0.2107
+    Medium中心: 0.2686
+    High中心: 0.3265
+  ICA_Component_2:
+    均值: -0.3814, 标准差: 0.0231
+    范围: [-0.4013, -0.3412]
+    Low中心: -0.4044
+    Medium中心: -0.3814
+    High中心: -0.3583
+  ICA_Component_3:
+    均值: -0.4190, 标准差: 0.0225
+    范围: [-0.4413, -0.3761]
+    Low中心: -0.4416
+    Medium中心: -0.4190
+    High中心: -0.3965
+  ICA_Component_4:
+    均值: 0.1736, 标准差: 0.0173
+    范围: [0.1204, 0.1861]
+    Low中心: 0.1562
+    Medium中心: 0.1736
+    High中心: 0.1909
+  ICA_Component_5:
+    均值: -0.5457, 标准差: 0.0394
+    范围: [-0.6169, -0.5171]
+    Low中心: -0.5851
+    Medium中心: -0.5457
+    High中心: -0.5063
+
+------------------------------------------------------------
+规则ID: Rule_1_3
+目标动作: 1
+聚类ID: 3
+训练样本数: 5
+使用次数: 0
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 1
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.1577, 标准差: 0.0242
+    范围: [-0.1841, -0.1300]
+    Low中心: -0.1819
+    Medium中心: -0.1577
+    High中心: -0.1335
+  ICA_Component_1:
+    均值: 0.5618, 标准差: 0.0976
+    范围: [0.4443, 0.6566]
+    Low中心: 0.4643
+    Medium中心: 0.5618
+    High中心: 0.6594
+  ICA_Component_2:
+    均值: -0.8413, 标准差: 0.0413
+    范围: [-0.8864, -0.7941]
+    Low中心: -0.8826
+    Medium中心: -0.8413
+    High中心: -0.8000
+  ICA_Component_3:
+    均值: 1.3884, 标准差: 0.2114
+    范围: [1.0726, 1.6245]
+    Low中心: 1.1770
+    Medium中心: 1.3884
+    High中心: 1.5998
+  ICA_Component_4:
+    均值: 0.1515, 标准差: 0.0592
+    范围: [0.0864, 0.2187]
+    Low中心: 0.0923
+    Medium中心: 0.1515
+    High中心: 0.2106
+  ICA_Component_5:
+    均值: 0.0057, 标准差: 0.1351
+    范围: [-0.1394, 0.2211]
+    Low中心: -0.1294
+    Medium中心: 0.0057
+    High中心: 0.1409
+
+------------------------------------------------------------
+规则ID: Rule_1_4
+目标动作: 1
+聚类ID: 4
+训练样本数: 8
+使用次数: 6
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 1
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.5502, 标准差: 0.0953
+    范围: [-0.6421, -0.4122]
+    Low中心: -0.6455
+    Medium中心: -0.5502
+    High中心: -0.4549
+  ICA_Component_1:
+    均值: 0.3204, 标准差: 0.2294
+    范围: [0.0129, 0.5585]
+    Low中心: 0.0909
+    Medium中心: 0.3204
+    High中心: 0.5498
+  ICA_Component_2:
+    均值: -0.1829, 标准差: 0.1051
+    范围: [-0.2825, -0.0210]
+    Low中心: -0.2880
+    Medium中心: -0.1829
+    High中心: -0.0777
+  ICA_Component_3:
+    均值: 0.5378, 标准差: 0.1687
+    范围: [0.2640, 0.7422]
+    Low中心: 0.3691
+    Medium中心: 0.5378
+    High中心: 0.7065
+  ICA_Component_4:
+    均值: -0.0761, 标准差: 0.0811
+    范围: [-0.1808, 0.0568]
+    Low中心: -0.1572
+    Medium中心: -0.0761
+    High中心: 0.0049
+  ICA_Component_5:
+    均值: 2.3354, 标准差: 0.1304
+    范围: [2.2130, 2.5359]
+    Low中心: 2.2050
+    Medium中心: 2.3354
+    High中心: 2.4658
+
+------------------------------------------------------------
+规则ID: Rule_2_0
+目标动作: 2
+聚类ID: 0
+训练样本数: 10
+使用次数: 0
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: 2.3529, 标准差: 0.1313
+    范围: [2.1542, 2.4818]
+    Low中心: 2.2216
+    Medium中心: 2.3529
+    High中心: 2.4842
+  ICA_Component_1:
+    均值: -0.1127, 标准差: 0.0506
+    范围: [-0.1706, -0.0441]
+    Low中心: -0.1633
+    Medium中心: -0.1127
+    High中心: -0.0620
+  ICA_Component_2:
+    均值: -0.4545, 标准差: 0.0482
+    范围: [-0.4898, -0.3518]
+    Low中心: -0.5027
+    Medium中心: -0.4545
+    High中心: -0.4062
+  ICA_Component_3:
+    均值: 0.6132, 标准差: 0.1238
+    范围: [0.3992, 0.7877]
+    Low中心: 0.4894
+    Medium中心: 0.6132
+    High中心: 0.7370
+  ICA_Component_4:
+    均值: 0.0698, 标准差: 0.0321
+    范围: [0.0286, 0.1282]
+    Low中心: 0.0377
+    Medium中心: 0.0698
+    High中心: 0.1019
+  ICA_Component_5:
+    均值: -0.4851, 标准差: 0.0996
+    范围: [-0.6832, -0.3682]
+    Low中心: -0.5847
+    Medium中心: -0.4851
+    High中心: -0.3854
+
+------------------------------------------------------------
+规则ID: Rule_2_1
+目标动作: 2
+聚类ID: 1
+训练样本数: 68
+使用次数: 5
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.3967, 标准差: 0.1315
+    范围: [-0.6053, -0.1248]
+    Low中心: -0.5282
+    Medium中心: -0.3967
+    High中心: -0.2652
+  ICA_Component_1:
+    均值: -0.2240, 标准差: 0.1386
+    范围: [-0.5602, 0.1284]
+    Low中心: -0.3626
+    Medium中心: -0.2240
+    High中心: -0.0854
+  ICA_Component_2:
+    均值: -0.5255, 标准差: 0.0435
+    范围: [-0.6939, -0.3722]
+    Low中心: -0.5690
+    Medium中心: -0.5255
+    High中心: -0.4819
+  ICA_Component_3:
+    均值: 0.1008, 标准差: 0.1561
+    范围: [-0.2727, 0.7755]
+    Low中心: -0.0553
+    Medium中心: 0.1008
+    High中心: 0.2569
+  ICA_Component_4:
+    均值: 0.3401, 标准差: 0.0130
+    范围: [0.2995, 0.3762]
+    Low中心: 0.3271
+    Medium中心: 0.3401
+    High中心: 0.3530
+  ICA_Component_5:
+    均值: -0.3169, 标准差: 0.0667
+    范围: [-0.6002, -0.1544]
+    Low中心: -0.3836
+    Medium中心: -0.3169
+    High中心: -0.2502
+
+------------------------------------------------------------
+规则ID: Rule_2_2
+目标动作: 2
+聚类ID: 2
+训练样本数: 17
+使用次数: 1
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: 0.3606, 标准差: 0.0761
+    范围: [0.0940, 0.4189]
+    Low中心: 0.2844
+    Medium中心: 0.3606
+    High中心: 0.4367
+  ICA_Component_1:
+    均值: 0.2936, 标准差: 0.0675
+    范围: [0.2269, 0.4063]
+    Low中心: 0.2261
+    Medium中心: 0.2936
+    High中心: 0.3610
+  ICA_Component_2:
+    均值: -0.3250, 标准差: 0.1500
+    范围: [-0.4013, 0.2043]
+    Low中心: -0.4750
+    Medium中心: -0.3250
+    High中心: -0.1751
+  ICA_Component_3:
+    均值: -0.3819, 标准差: 0.0996
+    范围: [-0.4413, -0.0548]
+    Low中心: -0.4816
+    Medium中心: -0.3819
+    High中心: -0.2823
+  ICA_Component_4:
+    均值: 0.1714, 标准差: 0.0381
+    范围: [0.0882, 0.2781]
+    Low中心: 0.1333
+    Medium中心: 0.1714
+    High中心: 0.2094
+  ICA_Component_5:
+    均值: -0.5958, 标准差: 0.1196
+    范围: [-0.9631, -0.5171]
+    Low中心: -0.7154
+    Medium中心: -0.5958
+    High中心: -0.4761
+
+------------------------------------------------------------
+规则ID: Rule_2_3
+目标动作: 2
+聚类ID: 3
+训练样本数: 8
+使用次数: 0
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.3696, 标准差: 0.1397
+    范围: [-0.5052, -0.0511]
+    Low中心: -0.5094
+    Medium中心: -0.3696
+    High中心: -0.2299
+  ICA_Component_1:
+    均值: 0.4972, 标准差: 0.0602
+    范围: [0.4210, 0.6153]
+    Low中心: 0.4370
+    Medium中心: 0.4972
+    High中心: 0.5574
+  ICA_Component_2:
+    均值: 1.4114, 标准差: 0.1218
+    范围: [1.2741, 1.6553]
+    Low中心: 1.2896
+    Medium中心: 1.4114
+    High中心: 1.5332
+  ICA_Component_3:
+    均值: 0.3890, 标准差: 0.1251
+    范围: [0.2249, 0.5337]
+    Low中心: 0.2640
+    Medium中心: 0.3890
+    High中心: 0.5141
+  ICA_Component_4:
+    均值: -0.4338, 标准差: 0.1703
+    范围: [-0.6493, -0.2200]
+    Low中心: -0.6041
+    Medium中心: -0.4338
+    High中心: -0.2635
+  ICA_Component_5:
+    均值: -0.8174, 标准差: 0.0420
+    范围: [-0.8771, -0.7626]
+    Low中心: -0.8594
+    Medium中心: -0.8174
+    High中心: -0.7754
+
+------------------------------------------------------------
+规则ID: Rule_2_4
+目标动作: 2
+聚类ID: 4
+训练样本数: 9
+使用次数: 0
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.5136, 标准差: 0.1371
+    范围: [-0.6421, -0.2205]
+    Low中心: -0.6507
+    Medium中心: -0.5136
+    High中心: -0.3764
+  ICA_Component_1:
+    均值: 0.3483, 标准差: 0.2303
+    范围: [0.0129, 0.5719]
+    Low中心: 0.1180
+    Medium中心: 0.3483
+    High中心: 0.5786
+  ICA_Component_2:
+    均值: -0.2094, 标准差: 0.1243
+    范围: [-0.4217, -0.0210]
+    Low中心: -0.3337
+    Medium中心: -0.2094
+    High中心: -0.0851
+  ICA_Component_3:
+    均值: 0.5567, 标准差: 0.1679
+    范围: [0.2640, 0.7422]
+    Low中心: 0.3889
+    Medium中心: 0.5567
+    High中心: 0.7246
+  ICA_Component_4:
+    均值: -0.0808, 标准差: 0.0775
+    范围: [-0.1808, 0.0568]
+    Low中心: -0.1583
+    Medium中心: -0.0808
+    High中心: -0.0032
+  ICA_Component_5:
+    均值: 2.2877, 标准差: 0.1825
+    范围: [1.9063, 2.5359]
+    Low中心: 2.1052
+    Medium中心: 2.2877
+    High中心: 2.4702
+
+------------------------------------------------------------
+规则ID: Rule_2_5
+目标动作: 2
+聚类ID: 5
+训练样本数: 6
+使用次数: 0
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.1236, 标准差: 0.0546
+    范围: [-0.1841, -0.0288]
+    Low中心: -0.1783
+    Medium中心: -0.1236
+    High中心: -0.0690
+  ICA_Component_1:
+    均值: 0.5534, 标准差: 0.1008
+    范围: [0.4443, 0.6566]
+    Low中心: 0.4526
+    Medium中心: 0.5534
+    High中心: 0.6541
+  ICA_Component_2:
+    均值: -0.8355, 标准差: 0.0492
+    范围: [-0.8864, -0.7725]
+    Low中心: -0.8847
+    Medium中心: -0.8355
+    High中心: -0.7863
+  ICA_Component_3:
+    均值: 1.4193, 标准差: 0.1967
+    范围: [1.0933, 1.6245]
+    Low中心: 1.2226
+    Medium中心: 1.4193
+    High中心: 1.6160
+  ICA_Component_4:
+    均值: 0.1551, 标准差: 0.0732
+    范围: [0.0745, 0.2456]
+    Low中心: 0.0818
+    Medium中心: 0.1551
+    High中心: 0.2283
+  ICA_Component_5:
+    均值: -0.0412, 标准差: 0.0980
+    范围: [-0.1394, 0.0815]
+    Low中心: -0.1392
+    Medium中心: -0.0412
+    High中心: 0.0568
+
+------------------------------------------------------------
+规则ID: Rule_2_6
+目标动作: 2
+聚类ID: 6
+训练样本数: 5
+使用次数: 1
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.5728, 标准差: 0.0420
+    范围: [-0.6167, -0.5219]
+    Low中心: -0.6148
+    Medium中心: -0.5728
+    High中心: -0.5309
+  ICA_Component_1:
+    均值: 0.0018, 标准差: 0.1157
+    范围: [-0.1333, 0.1555]
+    Low中心: -0.1138
+    Medium中心: 0.0018
+    High中心: 0.1175
+  ICA_Component_2:
+    均值: 1.6205, 标准差: 0.0167
+    范围: [1.6065, 1.6410]
+    Low中心: 1.6037
+    Medium中心: 1.6205
+    High中心: 1.6372
+  ICA_Component_3:
+    均值: 0.2700, 标准差: 0.0395
+    范围: [0.2373, 0.3449]
+    Low中心: 0.2306
+    Medium中心: 0.2700
+    High中心: 0.3095
+  ICA_Component_4:
+    均值: -0.0433, 标准差: 0.0740
+    范围: [-0.1810, 0.0215]
+    Low中心: -0.1173
+    Medium中心: -0.0433
+    High中心: 0.0307
+  ICA_Component_5:
+    均值: -0.7647, 标准差: 0.0054
+    范围: [-0.7710, -0.7571]
+    Low中心: -0.7702
+    Medium中心: -0.7647
+    High中心: -0.7593
+
+------------------------------------------------------------
+规则ID: Rule_2_7
+目标动作: 2
+聚类ID: 7
+训练样本数: 8
+使用次数: 3
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.4308, 标准差: 0.1162
+    范围: [-0.6078, -0.3235]
+    Low中心: -0.5470
+    Medium中心: -0.4308
+    High中心: -0.3147
+  ICA_Component_1:
+    均值: -0.1291, 标准差: 0.1269
+    范围: [-0.3075, -0.0169]
+    Low中心: -0.2560
+    Medium中心: -0.1291
+    High中心: -0.0022
+  ICA_Component_2:
+    均值: 0.3512, 标准差: 0.3273
+    范围: [-0.0245, 0.7557]
+    Low中心: 0.0239
+    Medium中心: 0.3512
+    High中心: 0.6785
+  ICA_Component_3:
+    均值: 0.0578, 标准差: 0.0843
+    范围: [-0.0766, 0.1401]
+    Low中心: -0.0265
+    Medium中心: 0.0578
+    High中心: 0.1420
+  ICA_Component_4:
+    均值: 0.3351, 标准差: 0.0965
+    范围: [0.1767, 0.4375]
+    Low中心: 0.2386
+    Medium中心: 0.3351
+    High中心: 0.4316
+  ICA_Component_5:
+    均值: -0.9162, 标准差: 0.0581
+    范围: [-0.9806, -0.8234]
+    Low中心: -0.9743
+    Medium中心: -0.9162
+    High中心: -0.8580
+
+------------------------------------------------------------
+规则ID: Rule_3_0
+目标动作: 3
+聚类ID: 0
+训练样本数: 6
+使用次数: 2
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: 2.3165, 标准差: 0.1239
+    范围: [2.1542, 2.4818]
+    Low中心: 2.1926
+    Medium中心: 2.3165
+    High中心: 2.4404
+  ICA_Component_1:
+    均值: -0.0970, 标准差: 0.0420
+    范围: [-0.1602, -0.0441]
+    Low中心: -0.1390
+    Medium中心: -0.0970
+    High中心: -0.0550
+  ICA_Component_2:
+    均值: -0.4407, 标准差: 0.0582
+    范围: [-0.4898, -0.3518]
+    Low中心: -0.4989
+    Medium中心: -0.4407
+    High中心: -0.3825
+  ICA_Component_3:
+    均值: 0.6791, 标准差: 0.0755
+    范围: [0.6027, 0.7877]
+    Low中心: 0.6035
+    Medium中心: 0.6791
+    High中心: 0.7546
+  ICA_Component_4:
+    均值: 0.0869, 标准差: 0.0287
+    范围: [0.0519, 0.1282]
+    Low中心: 0.0582
+    Medium中心: 0.0869
+    High中心: 0.1156
+  ICA_Component_5:
+    均值: -0.5286, 标准差: 0.1038
+    范围: [-0.6832, -0.4497]
+    Low中心: -0.6324
+    Medium中心: -0.5286
+    High中心: -0.4247
+
+------------------------------------------------------------
+规则ID: Rule_3_1
+目标动作: 3
+聚类ID: 1
+训练样本数: 44
+使用次数: 3
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.4254, 标准差: 0.1270
+    范围: [-0.6053, -0.1248]
+    Low中心: -0.5524
+    Medium中心: -0.4254
+    High中心: -0.2984
+  ICA_Component_1:
+    均值: -0.2462, 标准差: 0.1383
+    范围: [-0.5602, 0.0348]
+    Low中心: -0.3845
+    Medium中心: -0.2462
+    High中心: -0.1079
+  ICA_Component_2:
+    均值: -0.5247, 标准差: 0.0333
+    范围: [-0.6351, -0.3722]
+    Low中心: -0.5579
+    Medium中心: -0.5247
+    High中心: -0.4914
+  ICA_Component_3:
+    均值: 0.1016, 标准差: 0.1195
+    范围: [-0.2727, 0.6689]
+    Low中心: -0.0178
+    Medium中心: 0.1016
+    High中心: 0.2211
+  ICA_Component_4:
+    均值: 0.3433, 标准差: 0.0109
+    范围: [0.3117, 0.3762]
+    Low中心: 0.3324
+    Medium中心: 0.3433
+    High中心: 0.3541
+  ICA_Component_5:
+    均值: -0.3155, 标准差: 0.0581
+    范围: [-0.6002, -0.2300]
+    Low中心: -0.3736
+    Medium中心: -0.3155
+    High中心: -0.2574
+
+------------------------------------------------------------
+规则ID: Rule_3_2
+目标动作: 3
+聚类ID: 2
+训练样本数: 15
+使用次数: 3
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: 0.3566, 标准差: 0.0845
+    范围: [0.0758, 0.4189]
+    Low中心: 0.2721
+    Medium中心: 0.3566
+    High中心: 0.4411
+  ICA_Component_1:
+    均值: 0.2872, 标准差: 0.0670
+    范围: [0.2269, 0.4063]
+    Low中心: 0.2201
+    Medium中心: 0.2872
+    High中心: 0.3542
+  ICA_Component_2:
+    均值: -0.3256, 标准差: 0.1428
+    范围: [-0.4013, 0.1295]
+    Low中心: -0.4683
+    Medium中心: -0.3256
+    High中心: -0.1828
+  ICA_Component_3:
+    均值: -0.3746, 标准差: 0.1119
+    范围: [-0.4413, -0.0211]
+    Low中心: -0.4865
+    Medium中心: -0.3746
+    High中心: -0.2627
+  ICA_Component_4:
+    均值: 0.1761, 标准差: 0.0431
+    范围: [0.0882, 0.3041]
+    Low中心: 0.1330
+    Medium中心: 0.1761
+    High中心: 0.2192
+  ICA_Component_5:
+    均值: -0.5961, 标准差: 0.1226
+    范围: [-0.9387, -0.5171]
+    Low中心: -0.7187
+    Medium中心: -0.5961
+    High中心: -0.4735
+
+------------------------------------------------------------
+规则ID: Rule_3_3
+目标动作: 3
+聚类ID: 3
+训练样本数: 5
+使用次数: 1
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.4253, 标准差: 0.0806
+    范围: [-0.5102, -0.3235]
+    Low中心: -0.5059
+    Medium中心: -0.4253
+    High中心: -0.3447
+  ICA_Component_1:
+    均值: -0.1727, 标准差: 0.1255
+    范围: [-0.3114, -0.0169]
+    Low中心: -0.2983
+    Medium中心: -0.1727
+    High中心: -0.0472
+  ICA_Component_2:
+    均值: 0.1689, 标准差: 0.1792
+    范围: [-0.0245, 0.3794]
+    Low中心: -0.0102
+    Medium中心: 0.1689
+    High中心: 0.3481
+  ICA_Component_3:
+    均值: 0.0724, 标准差: 0.0829
+    范围: [-0.0766, 0.1401]
+    Low中心: -0.0105
+    Medium中心: 0.0724
+    High中心: 0.1553
+  ICA_Component_4:
+    均值: 0.3027, 标准差: 0.0971
+    范围: [0.1767, 0.4149]
+    Low中心: 0.2056
+    Medium中心: 0.3027
+    High中心: 0.3998
+  ICA_Component_5:
+    均值: -0.8902, 标准差: 0.0623
+    范围: [-0.9531, -0.8091]
+    Low中心: -0.9525
+    Medium中心: -0.8902
+    High中心: -0.8278
+
+------------------------------------------------------------
+规则ID: Rule_3_4
+目标动作: 3
+聚类ID: 4
+训练样本数: 5
+使用次数: 3
+规则描述: IF ICA_Component_0 ∈ [Low|Medium|High] AND ICA_Component_1 ∈ [Low|Medium|High] AND ICA_Component_2 ∈ [Low|Medium|High] AND ICA_Component_3 ∈ [Low|Medium|High] AND ICA_Component_4 ∈ [Low|Medium|High] AND ICA_Component_5 ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  ICA_Component_0:
+    均值: -0.4389, 标准差: 0.0779
+    范围: [-0.5052, -0.3434]
+    Low中心: -0.5168
+    Medium中心: -0.4389
+    High中心: -0.3609
+  ICA_Component_1:
+    均值: 0.5357, 标准差: 0.0409
+    范围: [0.5055, 0.6153]
+    Low中心: 0.4948
+    Medium中心: 0.5357
+    High中心: 0.5766
+  ICA_Component_2:
+    均值: 1.3344, 标准差: 0.0628
+    范围: [1.2741, 1.4102]
+    Low中心: 1.2717
+    Medium中心: 1.3344
+    High中心: 1.3972
+  ICA_Component_3:
+    均值: 0.3613, 标准差: 0.1427
+    范围: [0.2249, 0.5337]
+    Low中心: 0.2186
+    Medium中心: 0.3613
+    High中心: 0.5040
+  ICA_Component_4:
+    均值: -0.4108, 标准差: 0.1978
+    范围: [-0.6493, -0.2200]
+    Low中心: -0.6087
+    Medium中心: -0.4108
+    High中心: -0.2130
+  ICA_Component_5:
+    均值: -0.8399, 标准差: 0.0372
+    范围: [-0.8771, -0.7955]
+    Low中心: -0.8771
+    Medium中心: -0.8399
+    High中心: -0.8027

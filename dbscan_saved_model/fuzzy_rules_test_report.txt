@@ -1,0 +1,1920 @@
+================================================================================
+模糊分类器规则报告
+================================================================================
+生成时间: 2025-05-26 17:13:50
+DBSCAN参数: eps=0.5, min_samples=5
+总规则数: 33
+
+------------------------------------------------------------
+规则ID: Rule_0_0
+目标动作: 0
+聚类ID: 0
+训练样本数: 7
+使用次数: 28
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  enemy_distance:
+    均值: 1.9980, 标准差: 0.1041
+    范围: [1.8469, 2.1345]
+    Low中心: 1.8939
+    Medium中心: 1.9980
+    High中心: 2.1022
+  enemy_azimuth_h:
+    均值: 0.2638, 标准差: 0.0743
+    范围: [0.0850, 0.3255]
+    Low中心: 0.1895
+    Medium中心: 0.2638
+    High中心: 0.3380
+  enemy_azimuth_v:
+    均值: 0.6463, 标准差: 0.0057
+    范围: [0.6323, 0.6487]
+    Low中心: 0.6406
+    Medium中心: 0.6463
+    High中心: 0.6519
+  own_heading_sin:
+    均值: -0.0987, 标准差: 0.1013
+    范围: [-0.2015, 0.1356]
+    Low中心: -0.2000
+    Medium中心: -0.0987
+    High中心: 0.0026
+  own_heading_cos:
+    均值: 0.5795, 标准差: 0.0087
+    范围: [0.5584, 0.5837]
+    Low中心: 0.5708
+    Medium中心: 0.5795
+    High中心: 0.5882
+  missile_distance:
+    均值: 1.3503, 标准差: 0.0736
+    范围: [1.2558, 1.4763]
+    Low中心: 1.2767
+    Medium中心: 1.3503
+    High中心: 1.4239
+  missile_azimuth_h:
+    均值: 0.1399, 标准差: 0.0743
+    范围: [-0.0388, 0.2016]
+    Low中心: 0.0656
+    Medium中心: 0.1399
+    High中心: 0.2141
+  missile_azimuth_v:
+    均值: 0.6316, 标准差: 0.0060
+    范围: [0.6169, 0.6342]
+    Low中心: 0.6256
+    Medium中心: 0.6316
+    High中心: 0.6376
+
+------------------------------------------------------------
+规则ID: Rule_0_1
+目标动作: 0
+聚类ID: 1
+训练样本数: 45
+使用次数: 4
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.4887, 标准差: 0.2352
+    范围: [-0.7552, 0.1659]
+    Low中心: -0.7239
+    Medium中心: -0.4887
+    High中心: -0.2534
+  enemy_azimuth_h:
+    均值: 0.1910, 标准差: 0.1990
+    范围: [-0.0009, 0.8063]
+    Low中心: -0.0080
+    Medium中心: 0.1910
+    High中心: 0.3900
+  enemy_azimuth_v:
+    均值: 0.6293, 标准差: 0.0183
+    范围: [0.5426, 0.6479]
+    Low中心: 0.6110
+    Medium中心: 0.6293
+    High中心: 0.6476
+  own_heading_sin:
+    均值: -0.1565, 标准差: 0.1380
+    范围: [-0.6418, 0.0419]
+    Low中心: -0.2946
+    Medium中心: -0.1565
+    High中心: -0.0185
+  own_heading_cos:
+    均值: 0.5755, 标准差: 0.0238
+    范围: [0.4735, 0.5837]
+    Low中心: 0.5517
+    Medium中心: 0.5755
+    High中心: 0.5993
+  missile_distance:
+    均值: -0.4218, 标准差: 0.2656
+    范围: [-0.7148, 0.2982]
+    Low中心: -0.6874
+    Medium中心: -0.4218
+    High中心: -0.1561
+  missile_azimuth_h:
+    均值: 0.2220, 标准差: 0.1703
+    范围: [0.0154, 0.7418]
+    Low中心: 0.0518
+    Medium中心: 0.2220
+    High中心: 0.3923
+  missile_azimuth_v:
+    均值: 0.6208, 标准差: 0.0322
+    范围: [0.4945, 0.6342]
+    Low中心: 0.5885
+    Medium中心: 0.6208
+    High中心: 0.6530
+
+------------------------------------------------------------
+规则ID: Rule_0_2
+目标动作: 0
+聚类ID: 2
+训练样本数: 11
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  enemy_distance:
+    均值: 0.2201, 标准差: 0.0471
+    范围: [0.1621, 0.2782]
+    Low中心: 0.1730
+    Medium中心: 0.2201
+    High中心: 0.2672
+  enemy_azimuth_h:
+    均值: -0.1791, 标准差: 0.0437
+    范围: [-0.2502, -0.1471]
+    Low中心: -0.2228
+    Medium中心: -0.1791
+    High中心: -0.1354
+  enemy_azimuth_v:
+    均值: 0.5609, 标准差: 0.0173
+    范围: [0.5329, 0.5734]
+    Low中心: 0.5437
+    Medium中心: 0.5609
+    High中心: 0.5782
+  own_heading_sin:
+    均值: 0.1185, 标准差: 0.0513
+    范围: [0.0848, 0.2022]
+    Low中心: 0.0672
+    Medium中心: 0.1185
+    High中心: 0.1698
+  own_heading_cos:
+    均值: 0.5606, 标准差: 0.0107
+    范围: [0.5432, 0.5675]
+    Low中心: 0.5499
+    Medium中心: 0.5606
+    High中心: 0.5713
+  missile_distance:
+    均值: 0.3160, 标准差: 0.0580
+    范围: [0.2596, 0.4053]
+    Low中心: 0.2580
+    Medium中心: 0.3160
+    High中心: 0.3740
+  missile_azimuth_h:
+    均值: -0.1892, 标准差: 0.0456
+    范围: [-0.2638, -0.1608]
+    Low中心: -0.2349
+    Medium中心: -0.1892
+    High中心: -0.1436
+  missile_azimuth_v:
+    均值: 0.5811, 标准差: 0.0145
+    范围: [0.5574, 0.5900]
+    Low中心: 0.5666
+    Medium中心: 0.5811
+    High中心: 0.5955
+
+------------------------------------------------------------
+规则ID: Rule_0_3
+目标动作: 0
+聚类ID: 3
+训练样本数: 5
+使用次数: 2
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  enemy_distance:
+    均值: -1.0055, 标准差: 0.0828
+    范围: [-1.1635, -0.9499]
+    Low中心: -1.0884
+    Medium中心: -1.0055
+    High中心: -0.9227
+  enemy_azimuth_h:
+    均值: -0.8023, 标准差: 0.0126
+    范围: [-0.8262, -0.7884]
+    Low中心: -0.8150
+    Medium中心: -0.8023
+    High中心: -0.7897
+  enemy_azimuth_v:
+    均值: 0.1426, 标准差: 0.0129
+    范围: [0.1181, 0.1568]
+    Low中心: 0.1296
+    Medium中心: 0.1426
+    High中心: 0.1555
+  own_heading_sin:
+    均值: 0.0060, 标准差: 0.0575
+    范围: [-0.0406, 0.0874]
+    Low中心: -0.0515
+    Medium中心: 0.0060
+    High中心: 0.0634
+  own_heading_cos:
+    均值: 0.5764, 标准差: 0.0062
+    范围: [0.5671, 0.5814]
+    Low中心: 0.5702
+    Medium中心: 0.5764
+    High中心: 0.5826
+  missile_distance:
+    均值: -0.4271, 标准差: 0.0930
+    范围: [-0.5656, -0.3524]
+    Low中心: -0.5201
+    Medium中心: -0.4271
+    High中心: -0.3342
+  missile_azimuth_h:
+    均值: -0.4361, 标准差: 0.0753
+    范围: [-0.5814, -0.3870]
+    Low中心: -0.5114
+    Medium中心: -0.4361
+    High中心: -0.3609
+  missile_azimuth_v:
+    均值: 0.4789, 标准差: 0.0426
+    范围: [0.3959, 0.5060]
+    Low中心: 0.4363
+    Medium中心: 0.4789
+    High中心: 0.5215
+
+------------------------------------------------------------
+规则ID: Rule_0_4
+目标动作: 0
+聚类ID: 4
+训练样本数: 6
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.2081, 标准差: 0.1135
+    范围: [-0.4277, -0.0941]
+    Low中心: -0.3216
+    Medium中心: -0.2081
+    High中心: -0.0946
+  enemy_azimuth_h:
+    均值: 1.8862, 标准差: 0.0283
+    范围: [1.8639, 1.9438]
+    Low中心: 1.8578
+    Medium中心: 1.8862
+    High中心: 1.9145
+  enemy_azimuth_v:
+    均值: -0.5916, 标准差: 0.0601
+    范围: [-0.7148, -0.5451]
+    Low中心: -0.6517
+    Medium中心: -0.5916
+    High中心: -0.5315
+  own_heading_sin:
+    均值: -1.8033, 标准差: 0.0435
+    范围: [-1.8879, -1.7730]
+    Low中心: -1.8469
+    Medium中心: -1.8033
+    High中心: -1.7598
+  own_heading_cos:
+    均值: -0.8035, 标准差: 0.0971
+    范围: [-0.9942, -0.7367]
+    Low中心: -0.9005
+    Medium中心: -0.8035
+    High中心: -0.7064
+  missile_distance:
+    均值: 0.0131, 标准差: 0.1426
+    范围: [-0.2566, 0.1514]
+    Low中心: -0.1295
+    Medium中心: 0.0131
+    High中心: 0.1557
+  missile_azimuth_h:
+    均值: 1.8422, 标准差: 0.0328
+    范围: [1.8152, 1.8982]
+    Low中心: 1.8094
+    Medium中心: 1.8422
+    High中心: 1.8751
+  missile_azimuth_v:
+    均值: -0.8619, 标准差: 0.0847
+    范围: [-1.0080, -0.7929]
+    Low中心: -0.9466
+    Medium中心: -0.8619
+    High中心: -0.7772
+
+------------------------------------------------------------
+规则ID: Rule_0_5
+目标动作: 0
+聚类ID: 5
+训练样本数: 6
+使用次数: 2
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 0
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.1829, 标准差: 0.1371
+    范围: [-0.4103, -0.0492]
+    Low中心: -0.3200
+    Medium中心: -0.1829
+    High中心: -0.0458
+  enemy_azimuth_h:
+    均值: -1.5134, 标准差: 0.0405
+    范围: [-1.5649, -1.4656]
+    Low中心: -1.5539
+    Medium中心: -1.5134
+    High中心: -1.4728
+  enemy_azimuth_v:
+    均值: -1.1204, 标准差: 0.1307
+    范围: [-1.2911, -0.9696]
+    Low中心: -1.2512
+    Medium中心: -1.1204
+    High中心: -0.9897
+  own_heading_sin:
+    均值: 1.6041, 标准差: 0.0528
+    范围: [1.5469, 1.6778]
+    Low中心: 1.5514
+    Medium中心: 1.6041
+    High中心: 1.6569
+  own_heading_cos:
+    均值: -0.8839, 标准差: 0.1211
+    范围: [-1.0565, -0.7546]
+    Low中心: -1.0050
+    Medium中心: -0.8839
+    High中心: -0.7628
+  missile_distance:
+    均值: -0.0487, 标准差: 0.1890
+    范围: [-0.3675, 0.1306]
+    Low中心: -0.2377
+    Medium中心: -0.0487
+    High中心: 0.1404
+  missile_azimuth_h:
+    均值: -1.5376, 标准差: 0.0399
+    范围: [-1.5906, -1.4903]
+    Low中心: -1.5775
+    Medium中心: -1.5376
+    High中心: -1.4977
+  missile_azimuth_v:
+    均值: -0.9319, 标准差: 0.1061
+    范围: [-1.0761, -0.8078]
+    Low中心: -1.0380
+    Medium中心: -0.9319
+    High中心: -0.8257
+
+------------------------------------------------------------
+规则ID: Rule_1_0
+目标动作: 1
+聚类ID: 0
+训练样本数: 25
+使用次数: 8
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 1
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.5369, 标准差: 0.1532
+    范围: [-0.7552, -0.2428]
+    Low中心: -0.6901
+    Medium中心: -0.5369
+    High中心: -0.3837
+  enemy_azimuth_h:
+    均值: 0.1357, 标准差: 0.0758
+    范围: [0.0977, 0.4352]
+    Low中心: 0.0599
+    Medium中心: 0.1357
+    High中心: 0.2116
+  enemy_azimuth_v:
+    均值: 0.6372, 标准差: 0.0028
+    范围: [0.6343, 0.6479]
+    Low中心: 0.6343
+    Medium中心: 0.6372
+    High中心: 0.6400
+  own_heading_sin:
+    均值: -0.1221, 标准差: 0.0425
+    范围: [-0.3038, -0.1084]
+    Low中心: -0.1646
+    Medium中心: -0.1221
+    High中心: -0.0796
+  own_heading_cos:
+    均值: 0.5830, 标准差: 0.0028
+    范围: [0.5700, 0.5837]
+    Low中心: 0.5802
+    Medium中心: 0.5830
+    High中心: 0.5857
+  missile_distance:
+    均值: -0.4761, 标准差: 0.1788
+    范围: [-0.7148, -0.1254]
+    Low中心: -0.6549
+    Medium中心: -0.4761
+    High中心: -0.2972
+  missile_azimuth_h:
+    均值: 0.1748, 标准差: 0.0626
+    范围: [0.1548, 0.4278]
+    Low中心: 0.1121
+    Medium中心: 0.1748
+    High中心: 0.2374
+  missile_azimuth_v:
+    均值: 0.6325, 标准差: 0.0060
+    范围: [0.6058, 0.6342]
+    Low中心: 0.6266
+    Medium中心: 0.6325
+    High中心: 0.6385
+
+------------------------------------------------------------
+规则ID: Rule_1_1
+目标动作: 1
+聚类ID: 1
+训练样本数: 5
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 1
+
+特征隶属函数:
+  enemy_distance:
+    均值: 0.2288, 标准差: 0.0374
+    范围: [0.1621, 0.2782]
+    Low中心: 0.1914
+    Medium中心: 0.2288
+    High中心: 0.2661
+  enemy_azimuth_h:
+    均值: -0.1741, 标准差: 0.0382
+    范围: [-0.2500, -0.1471]
+    Low中心: -0.2123
+    Medium中心: -0.1741
+    High中心: -0.1359
+  enemy_azimuth_v:
+    均值: 0.5630, 标准差: 0.0151
+    范围: [0.5329, 0.5734]
+    Low中心: 0.5479
+    Medium中心: 0.5630
+    High中心: 0.5781
+  own_heading_sin:
+    均值: 0.1110, 标准差: 0.0456
+    范围: [0.0848, 0.2021]
+    Low中心: 0.0655
+    Medium中心: 0.1110
+    High中心: 0.1566
+  own_heading_cos:
+    均值: 0.5622, 标准差: 0.0095
+    范围: [0.5432, 0.5675]
+    Low中心: 0.5527
+    Medium中心: 0.5622
+    High中心: 0.5717
+  missile_distance:
+    均值: 0.3162, 标准差: 0.0479
+    范围: [0.2596, 0.4052]
+    Low中心: 0.2683
+    Medium中心: 0.3162
+    High中心: 0.3641
+  missile_azimuth_h:
+    均值: -0.1819, 标准差: 0.0409
+    范围: [-0.2636, -0.1608]
+    Low中心: -0.2228
+    Medium中心: -0.1819
+    High中心: -0.1411
+  missile_azimuth_v:
+    均值: 0.5834, 标准差: 0.0130
+    范围: [0.5575, 0.5900]
+    Low中心: 0.5704
+    Medium中心: 0.5834
+    High中心: 0.5963
+
+------------------------------------------------------------
+规则ID: Rule_2_0
+目标动作: 2
+聚类ID: 0
+训练样本数: 8
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  enemy_distance:
+    均值: 1.9767, 标准差: 0.1117
+    范围: [1.8469, 2.1345]
+    Low中心: 1.8649
+    Medium中心: 1.9767
+    High中心: 2.0884
+  enemy_azimuth_h:
+    均值: 0.2664, 标准差: 0.0699
+    范围: [0.0850, 0.3255]
+    Low中心: 0.1966
+    Medium中心: 0.2664
+    High中心: 0.3363
+  enemy_azimuth_v:
+    均值: 0.6466, 标准差: 0.0054
+    范围: [0.6323, 0.6487]
+    Low中心: 0.6412
+    Medium中心: 0.6466
+    High中心: 0.6519
+  own_heading_sin:
+    均值: -0.1006, 标准差: 0.0949
+    范围: [-0.2015, 0.1356]
+    Low中心: -0.1955
+    Medium中心: -0.1006
+    High中心: -0.0057
+  own_heading_cos:
+    均值: 0.5800, 标准差: 0.0082
+    范围: [0.5584, 0.5837]
+    Low中心: 0.5718
+    Medium中心: 0.5800
+    High中心: 0.5883
+  missile_distance:
+    均值: 1.3286, 标准差: 0.0875
+    范围: [1.2161, 1.4763]
+    Low中心: 1.2411
+    Medium中心: 1.3286
+    High中心: 1.4161
+  missile_azimuth_h:
+    均值: 0.1425, 标准差: 0.0698
+    范围: [-0.0388, 0.2016]
+    Low中心: 0.0727
+    Medium中心: 0.1425
+    High中心: 0.2124
+  missile_azimuth_v:
+    均值: 0.6320, 标准差: 0.0057
+    范围: [0.6169, 0.6342]
+    Low中心: 0.6263
+    Medium中心: 0.6320
+    High中心: 0.6376
+
+------------------------------------------------------------
+规则ID: Rule_2_1
+目标动作: 2
+聚类ID: 1
+训练样本数: 51
+使用次数: 2
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.4774, 标准差: 0.2371
+    范围: [-0.7552, 0.1659]
+    Low中心: -0.7145
+    Medium中心: -0.4774
+    High中心: -0.2404
+  enemy_azimuth_h:
+    均值: 0.1896, 标准差: 0.1965
+    范围: [0.0024, 0.8064]
+    Low中心: -0.0069
+    Medium中心: 0.1896
+    High中心: 0.3860
+  enemy_azimuth_v:
+    均值: 0.6296, 标准差: 0.0210
+    范围: [0.5426, 0.6479]
+    Low中心: 0.6086
+    Medium中心: 0.6296
+    High中心: 0.6506
+  own_heading_sin:
+    均值: -0.1514, 标准差: 0.1219
+    范围: [-0.6418, 0.0218]
+    Low中心: -0.2733
+    Medium中心: -0.1514
+    High中心: -0.0294
+  own_heading_cos:
+    均值: 0.5773, 标准差: 0.0196
+    范围: [0.4735, 0.5837]
+    Low中心: 0.5578
+    Medium中心: 0.5773
+    High中心: 0.5969
+  missile_distance:
+    均值: -0.4130, 标准差: 0.2630
+    范围: [-0.7148, 0.2983]
+    Low中心: -0.6760
+    Medium中心: -0.4130
+    High中心: -0.1499
+  missile_azimuth_h:
+    均值: 0.2182, 标准差: 0.1658
+    范围: [0.0378, 0.7419]
+    Low中心: 0.0524
+    Medium中心: 0.2182
+    High中心: 0.3840
+  missile_azimuth_v:
+    均值: 0.6215, 标准差: 0.0333
+    范围: [0.4945, 0.6342]
+    Low中心: 0.5882
+    Medium中心: 0.6215
+    High中心: 0.6549
+
+------------------------------------------------------------
+规则ID: Rule_2_2
+目标动作: 2
+聚类ID: 2
+训练样本数: 10
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  enemy_distance:
+    均值: 0.2065, 标准差: 0.0402
+    范围: [0.1621, 0.2781]
+    Low中心: 0.1663
+    Medium中心: 0.2065
+    High中心: 0.2468
+  enemy_azimuth_h:
+    均值: -0.1724, 标准差: 0.0402
+    范围: [-0.2541, -0.1471]
+    Low中心: -0.2126
+    Medium中心: -0.1724
+    High中心: -0.1323
+  enemy_azimuth_v:
+    均值: 0.5636, 标准差: 0.0159
+    范围: [0.5311, 0.5734]
+    Low中心: 0.5477
+    Medium中心: 0.5636
+    High中心: 0.5794
+  own_heading_sin:
+    均值: 0.1080, 标准差: 0.0421
+    范围: [0.0848, 0.2022]
+    Low中心: 0.0659
+    Medium中心: 0.1080
+    High中心: 0.1500
+  own_heading_cos:
+    均值: 0.5629, 标准差: 0.0086
+    范围: [0.5432, 0.5675]
+    Low中心: 0.5543
+    Medium中心: 0.5629
+    High中心: 0.5715
+  missile_distance:
+    均值: 0.2953, 标准差: 0.0420
+    范围: [0.2596, 0.4051]
+    Low中心: 0.2534
+    Medium中心: 0.2953
+    High中心: 0.3373
+  missile_azimuth_h:
+    均值: -0.1828, 标准差: 0.0430
+    范围: [-0.2737, -0.1608]
+    Low中心: -0.2258
+    Medium中心: -0.1828
+    High中心: -0.1398
+  missile_azimuth_v:
+    均值: 0.5830, 标准差: 0.0138
+    范围: [0.5538, 0.5900]
+    Low中心: 0.5693
+    Medium中心: 0.5830
+    High中心: 0.5968
+
+------------------------------------------------------------
+规则ID: Rule_2_3
+目标动作: 2
+聚类ID: 3
+训练样本数: 8
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.2392, 标准差: 0.1195
+    范围: [-0.4277, -0.0941]
+    Low中心: -0.3587
+    Medium中心: -0.2392
+    High中心: -0.1197
+  enemy_azimuth_h:
+    均值: 1.8886, 标准差: 0.0249
+    范围: [1.8639, 1.9438]
+    Low中心: 1.8637
+    Medium中心: 1.8886
+    High中心: 1.9135
+  enemy_azimuth_v:
+    均值: -0.5963, 标准差: 0.0527
+    范围: [-0.7148, -0.5451]
+    Low中心: -0.6490
+    Medium中心: -0.5963
+    High中心: -0.5435
+  own_heading_sin:
+    均值: -1.8145, 标准差: 0.0445
+    范围: [-1.8879, -1.7730]
+    Low中心: -1.8590
+    Medium中心: -1.8145
+    High中心: -1.7700
+  own_heading_cos:
+    均值: -0.8278, 标准差: 0.0991
+    范围: [-0.9942, -0.7367]
+    Low中心: -0.9268
+    Medium中心: -0.8278
+    High中心: -0.7287
+  missile_distance:
+    均值: -0.0469, 标准差: 0.1698
+    范围: [-0.3329, 0.1514]
+    Low中心: -0.2167
+    Medium中心: -0.0469
+    High中心: 0.1230
+  missile_azimuth_h:
+    均值: 1.8487, 标准差: 0.0310
+    范围: [1.8152, 1.8982]
+    Low中心: 1.8177
+    Medium中心: 1.8487
+    High中心: 1.8797
+  missile_azimuth_v:
+    均值: -0.8779, 标准差: 0.0796
+    范围: [-1.0080, -0.7929]
+    Low中心: -0.9576
+    Medium中心: -0.8779
+    High中心: -0.7983
+
+------------------------------------------------------------
+规则ID: Rule_2_4
+目标动作: 2
+聚类ID: 4
+训练样本数: 5
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 2
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.1547, 标准差: 0.1334
+    范围: [-0.4103, -0.0492]
+    Low中心: -0.2881
+    Medium中心: -0.1547
+    High中心: -0.0213
+  enemy_azimuth_h:
+    均值: -1.5044, 标准差: 0.0386
+    范围: [-1.5649, -1.4656]
+    Low中心: -1.5429
+    Medium中心: -1.5044
+    High中心: -1.4658
+  enemy_azimuth_v:
+    均值: -1.0911, 标准差: 0.1239
+    范围: [-1.2911, -0.9696]
+    Low中心: -1.2151
+    Medium中心: -1.0911
+    High中心: -0.9672
+  own_heading_sin:
+    均值: 1.5894, 标准差: 0.0452
+    范围: [1.5469, 1.6620]
+    Low中心: 1.5443
+    Medium中心: 1.5894
+    High中心: 1.6346
+  own_heading_cos:
+    均值: -0.8494, 标准差: 0.1023
+    范围: [-1.0163, -0.7546]
+    Low中心: -0.9517
+    Medium中心: -0.8494
+    High中心: -0.7471
+  missile_distance:
+    均值: -0.0137, 标准差: 0.1885
+    范围: [-0.3675, 0.1306]
+    Low中心: -0.2021
+    Medium中心: -0.0137
+    High中心: 0.1748
+  missile_azimuth_h:
+    均值: -1.5270, 标准差: 0.0352
+    范围: [-1.5783, -1.4903]
+    Low中心: -1.5622
+    Medium中心: -1.5270
+    High中心: -1.4918
+  missile_azimuth_v:
+    均值: -0.9030, 标准差: 0.0923
+    范围: [-1.0401, -0.8078]
+    Low中心: -0.9953
+    Medium中心: -0.9030
+    High中心: -0.8107
+
+------------------------------------------------------------
+规则ID: Rule_3_0
+目标动作: 3
+聚类ID: 0
+训练样本数: 10
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  enemy_distance:
+    均值: 2.0036, 标准差: 0.1140
+    范围: [1.8469, 2.1345]
+    Low中心: 1.8896
+    Medium中心: 2.0036
+    High中心: 2.1175
+  enemy_azimuth_h:
+    均值: 0.2521, 标准差: 0.0795
+    范围: [0.0850, 0.3255]
+    Low中心: 0.1726
+    Medium中心: 0.2521
+    High中心: 0.3316
+  enemy_azimuth_v:
+    均值: 0.6457, 标准差: 0.0059
+    范围: [0.6323, 0.6487]
+    Low中心: 0.6397
+    Medium中心: 0.6457
+    High中心: 0.6516
+  own_heading_sin:
+    均值: -0.0802, 标准差: 0.1070
+    范围: [-0.2015, 0.1356]
+    Low中心: -0.1872
+    Medium中心: -0.0802
+    High中心: 0.0269
+  own_heading_cos:
+    均值: 0.5786, 标准差: 0.0092
+    范围: [0.5584, 0.5837]
+    Low中心: 0.5694
+    Medium中心: 0.5786
+    High中心: 0.5879
+  missile_distance:
+    均值: 1.3516, 标准差: 0.0920
+    范围: [1.2161, 1.4763]
+    Low中心: 1.2596
+    Medium中心: 1.3516
+    High中心: 1.4436
+  missile_azimuth_h:
+    均值: 0.1282, 标准差: 0.0795
+    范围: [-0.0388, 0.2016]
+    Low中心: 0.0487
+    Medium中心: 0.1282
+    High中心: 0.2077
+  missile_azimuth_v:
+    均值: 0.6310, 标准差: 0.0063
+    范围: [0.6169, 0.6342]
+    Low中心: 0.6248
+    Medium中心: 0.6310
+    High中心: 0.6373
+
+------------------------------------------------------------
+规则ID: Rule_3_1
+目标动作: 3
+聚类ID: 1
+训练样本数: 64
+使用次数: 6
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.4661, 标准差: 0.2359
+    范围: [-0.7884, 0.1659]
+    Low中心: -0.7019
+    Medium中心: -0.4661
+    High中心: -0.2302
+  enemy_azimuth_h:
+    均值: 0.1829, 标准差: 0.2029
+    范围: [-0.1625, 0.8349]
+    Low中心: -0.0200
+    Medium中心: 0.1829
+    High中心: 0.3858
+  enemy_azimuth_v:
+    均值: 0.6280, 标准差: 0.0239
+    范围: [0.5303, 0.6479]
+    Low中心: 0.6041
+    Medium中心: 0.6280
+    High中心: 0.6520
+  own_heading_sin:
+    均值: -0.1482, 标准差: 0.1359
+    范围: [-0.6482, 0.2044]
+    Low中心: -0.2841
+    Medium中心: -0.1482
+    High中心: -0.0123
+  own_heading_cos:
+    均值: 0.5760, 标准差: 0.0225
+    范围: [0.4708, 0.5837]
+    Low中心: 0.5535
+    Medium中心: 0.5760
+    High中心: 0.5985
+  missile_distance:
+    均值: -0.4034, 标准差: 0.2667
+    范围: [-0.8327, 0.2983]
+    Low中心: -0.6701
+    Medium中心: -0.4034
+    High中心: -0.1367
+  missile_azimuth_h:
+    均值: 0.2117, 标准差: 0.1770
+    范围: [-0.1507, 0.8191]
+    Low中心: 0.0348
+    Medium中心: 0.2117
+    High中心: 0.3887
+  missile_azimuth_v:
+    均值: 0.6202, 标准差: 0.0369
+    范围: [0.4534, 0.6342]
+    Low中心: 0.5833
+    Medium中心: 0.6202
+    High中心: 0.6571
+
+------------------------------------------------------------
+规则ID: Rule_3_2
+目标动作: 3
+聚类ID: 2
+训练样本数: 12
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  enemy_distance:
+    均值: 0.2164, 标准差: 0.0431
+    范围: [0.1621, 0.2782]
+    Low中心: 0.1733
+    Medium中心: 0.2164
+    High中心: 0.2594
+  enemy_azimuth_h:
+    均值: -0.1810, 标准差: 0.0428
+    范围: [-0.2548, -0.1471]
+    Low中心: -0.2238
+    Medium中心: -0.1810
+    High中心: -0.1382
+  enemy_azimuth_v:
+    均值: 0.5603, 标准差: 0.0169
+    范围: [0.5308, 0.5734]
+    Low中心: 0.5434
+    Medium中心: 0.5603
+    High中心: 0.5772
+  own_heading_sin:
+    均值: 0.1187, 标准差: 0.0469
+    范围: [0.0848, 0.2021]
+    Low中心: 0.0718
+    Medium中心: 0.1187
+    High中心: 0.1656
+  own_heading_cos:
+    均值: 0.5608, 标准差: 0.0096
+    范围: [0.5432, 0.5675]
+    Low中心: 0.5511
+    Medium中心: 0.5608
+    High中心: 0.5704
+  missile_distance:
+    均值: 0.3107, 标准差: 0.0519
+    范围: [0.2596, 0.4052]
+    Low中心: 0.2588
+    Medium中心: 0.3107
+    High中心: 0.3625
+  missile_azimuth_h:
+    均值: -0.1918, 标准差: 0.0456
+    范围: [-0.2744, -0.1608]
+    Low中心: -0.2373
+    Medium中心: -0.1918
+    High中心: -0.1462
+  missile_azimuth_v:
+    均值: 0.5803, 标准差: 0.0145
+    范围: [0.5535, 0.5900]
+    Low中心: 0.5658
+    Medium中心: 0.5803
+    High中心: 0.5948
+
+------------------------------------------------------------
+规则ID: Rule_3_3
+目标动作: 3
+聚类ID: 3
+训练样本数: 9
+使用次数: 1
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.2602, 标准差: 0.1273
+    范围: [-0.4277, -0.0941]
+    Low中心: -0.3875
+    Medium中心: -0.2602
+    High中心: -0.1329
+  enemy_azimuth_h:
+    均值: 1.8947, 标准差: 0.0292
+    范围: [1.8639, 1.9438]
+    Low中心: 1.8655
+    Medium中心: 1.8947
+    High中心: 1.9239
+  enemy_azimuth_v:
+    均值: -0.6094, 标准差: 0.0621
+    范围: [-0.7148, -0.5451]
+    Low中心: -0.6715
+    Medium中心: -0.6094
+    High中心: -0.5473
+  own_heading_sin:
+    均值: -1.8226, 标准差: 0.0479
+    范围: [-1.8879, -1.7730]
+    Low中心: -1.8705
+    Medium中心: -1.8226
+    High中心: -1.7748
+  own_heading_cos:
+    均值: -0.8463, 标准差: 0.1071
+    范围: [-0.9942, -0.7367]
+    Low中心: -0.9533
+    Medium中心: -0.8463
+    High中心: -0.7392
+  missile_distance:
+    均值: -0.0702, 标准差: 0.1732
+    范围: [-0.3329, 0.1514]
+    Low中心: -0.2433
+    Medium中心: -0.0702
+    High中心: 0.1030
+  missile_azimuth_h:
+    均值: 1.8542, 标准差: 0.0331
+    范围: [1.8152, 1.8982]
+    Low中心: 1.8211
+    Medium中心: 1.8542
+    High中心: 1.8873
+  missile_azimuth_v:
+    均值: -0.8924, 标准差: 0.0855
+    范围: [-1.0080, -0.7929]
+    Low中心: -0.9779
+    Medium中心: -0.8924
+    High中心: -0.8069
+
+------------------------------------------------------------
+规则ID: Rule_3_4
+目标动作: 3
+聚类ID: 4
+训练样本数: 6
+使用次数: 1
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 3
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.1747, 标准差: 0.1297
+    范围: [-0.4103, -0.0492]
+    Low中心: -0.3044
+    Medium中心: -0.1747
+    High中心: -0.0450
+  enemy_azimuth_h:
+    均值: -1.5114, 标准差: 0.0385
+    范围: [-1.5649, -1.4656]
+    Low中心: -1.5499
+    Medium中心: -1.5114
+    High中心: -1.4729
+  enemy_azimuth_v:
+    均值: -1.1132, 标准差: 0.1234
+    范围: [-1.2911, -0.9696]
+    Low中心: -1.2365
+    Medium中心: -1.1132
+    High中心: -0.9898
+  own_heading_sin:
+    均值: 1.6049, 标准差: 0.0539
+    范围: [1.5469, 1.6824]
+    Low中心: 1.5511
+    Medium中心: 1.6049
+    High中心: 1.6588
+  own_heading_cos:
+    均值: -0.8859, 标准差: 0.1240
+    范围: [-1.0685, -0.7546]
+    Low中心: -1.0099
+    Medium中心: -0.8859
+    High中心: -0.7619
+  missile_distance:
+    均值: -0.0425, 标准差: 0.1838
+    范围: [-0.3675, 0.1306]
+    Low中心: -0.2263
+    Medium中心: -0.0425
+    High中心: 0.1412
+  missile_azimuth_h:
+    均值: -1.5366, 标准差: 0.0386
+    范围: [-1.5845, -1.4903]
+    Low中心: -1.5752
+    Medium中心: -1.5366
+    High中心: -1.4980
+  missile_azimuth_v:
+    均值: -0.9288, 标准差: 0.1022
+    范围: [-1.0581, -0.8078]
+    Low中心: -1.0310
+    Medium中心: -0.9288
+    High中心: -0.8266
+
+------------------------------------------------------------
+规则ID: Rule_4_0
+目标动作: 4
+聚类ID: 0
+训练样本数: 10
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 4
+
+特征隶属函数:
+  enemy_distance:
+    均值: 2.0036, 标准差: 0.1140
+    范围: [1.8469, 2.1345]
+    Low中心: 1.8896
+    Medium中心: 2.0036
+    High中心: 2.1175
+  enemy_azimuth_h:
+    均值: 0.2521, 标准差: 0.0795
+    范围: [0.0850, 0.3255]
+    Low中心: 0.1726
+    Medium中心: 0.2521
+    High中心: 0.3316
+  enemy_azimuth_v:
+    均值: 0.6457, 标准差: 0.0059
+    范围: [0.6323, 0.6487]
+    Low中心: 0.6397
+    Medium中心: 0.6457
+    High中心: 0.6516
+  own_heading_sin:
+    均值: -0.0802, 标准差: 0.1070
+    范围: [-0.2015, 0.1356]
+    Low中心: -0.1872
+    Medium中心: -0.0802
+    High中心: 0.0269
+  own_heading_cos:
+    均值: 0.5786, 标准差: 0.0092
+    范围: [0.5584, 0.5837]
+    Low中心: 0.5694
+    Medium中心: 0.5786
+    High中心: 0.5879
+  missile_distance:
+    均值: 1.3516, 标准差: 0.0920
+    范围: [1.2161, 1.4763]
+    Low中心: 1.2596
+    Medium中心: 1.3516
+    High中心: 1.4436
+  missile_azimuth_h:
+    均值: 0.1282, 标准差: 0.0795
+    范围: [-0.0388, 0.2016]
+    Low中心: 0.0487
+    Medium中心: 0.1282
+    High中心: 0.2077
+  missile_azimuth_v:
+    均值: 0.6310, 标准差: 0.0063
+    范围: [0.6169, 0.6342]
+    Low中心: 0.6248
+    Medium中心: 0.6310
+    High中心: 0.6373
+
+------------------------------------------------------------
+规则ID: Rule_4_1
+目标动作: 4
+聚类ID: 1
+训练样本数: 77
+使用次数: 5
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 4
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.4527, 标准差: 0.2451
+    范围: [-0.7884, 0.2414]
+    Low中心: -0.6978
+    Medium中心: -0.4527
+    High中心: -0.2075
+  enemy_azimuth_h:
+    均值: 0.1800, 标准差: 0.2084
+    范围: [-0.1625, 0.8219]
+    Low中心: -0.0283
+    Medium中心: 0.1800
+    High中心: 0.3884
+  enemy_azimuth_v:
+    均值: 0.6269, 标准差: 0.0244
+    范围: [0.5360, 0.6479]
+    Low中心: 0.6025
+    Medium中心: 0.6269
+    High中心: 0.6513
+  own_heading_sin:
+    均值: -0.1405, 标准差: 0.1337
+    范围: [-0.6418, 0.2044]
+    Low中心: -0.2742
+    Medium中心: -0.1405
+    High中心: -0.0068
+  own_heading_cos:
+    均值: 0.5764, 标准差: 0.0191
+    范围: [0.4735, 0.5837]
+    Low中心: 0.5573
+    Medium中心: 0.5764
+    High中心: 0.5954
+  missile_distance:
+    均值: -0.3908, 标准差: 0.2720
+    范围: [-0.8327, 0.3515]
+    Low中心: -0.6628
+    Medium中心: -0.3908
+    High中心: -0.1189
+  missile_azimuth_h:
+    均值: 0.2075, 标准差: 0.1807
+    范围: [-0.1507, 0.7687]
+    Low中心: 0.0269
+    Medium中心: 0.2075
+    High中心: 0.3882
+  missile_azimuth_v:
+    均值: 0.6198, 标准差: 0.0352
+    范围: [0.4809, 0.6342]
+    Low中心: 0.5847
+    Medium中心: 0.6198
+    High中心: 0.6550
+
+------------------------------------------------------------
+规则ID: Rule_4_2
+目标动作: 4
+聚类ID: 2
+训练样本数: 15
+使用次数: 1
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 4
+
+特征隶属函数:
+  enemy_distance:
+    均值: 0.2219, 标准差: 0.0426
+    范围: [0.1621, 0.2782]
+    Low中心: 0.1793
+    Medium中心: 0.2219
+    High中心: 0.2644
+  enemy_azimuth_h:
+    均值: -0.1916, 标准差: 0.0452
+    范围: [-0.2548, -0.1471]
+    Low中心: -0.2368
+    Medium中心: -0.1916
+    High中心: -0.1463
+  enemy_azimuth_v:
+    均值: 0.5561, 标准差: 0.0179
+    范围: [0.5308, 0.5734]
+    Low中心: 0.5382
+    Medium中心: 0.5561
+    High中心: 0.5740
+  own_heading_sin:
+    均值: 0.1300, 标准差: 0.0489
+    范围: [0.0848, 0.2022]
+    Low中心: 0.0811
+    Medium中心: 0.1300
+    High中心: 0.1789
+  own_heading_cos:
+    均值: 0.5585, 标准差: 0.0100
+    范围: [0.5432, 0.5675]
+    Low中心: 0.5485
+    Medium中心: 0.5585
+    High中心: 0.5686
+  missile_distance:
+    均值: 0.3194, 标准差: 0.0541
+    范围: [0.2596, 0.4052]
+    Low中心: 0.2652
+    Medium中心: 0.3194
+    High中心: 0.3735
+  missile_azimuth_h:
+    均值: -0.2032, 标准差: 0.0484
+    范围: [-0.2744, -0.1608]
+    Low中心: -0.2516
+    Medium中心: -0.2032
+    High中心: -0.1548
+  missile_azimuth_v:
+    均值: 0.5767, 标准差: 0.0154
+    范围: [0.5535, 0.5900]
+    Low中心: 0.5613
+    Medium中心: 0.5767
+    High中心: 0.5921
+
+------------------------------------------------------------
+规则ID: Rule_4_3
+目标动作: 4
+聚类ID: 3
+训练样本数: 17
+使用次数: 6
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 4
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.0404, 标准差: 0.2915
+    范围: [-0.4103, 0.5119]
+    Low中心: -0.3319
+    Medium中心: -0.0404
+    High中心: 0.2512
+  enemy_azimuth_h:
+    均值: -1.5417, 标准差: 0.0342
+    范围: [-1.5810, -1.4656]
+    Low中心: -1.5759
+    Medium中心: -1.5417
+    High中心: -1.5075
+  enemy_azimuth_v:
+    均值: -1.2132, 标准差: 0.1130
+    范围: [-1.3537, -0.9696]
+    Low中心: -1.3262
+    Medium中心: -1.2132
+    High中心: -1.1003
+  own_heading_sin:
+    均值: 1.6513, 标准差: 0.0629
+    范围: [1.5469, 1.8142]
+    Low中心: 1.5884
+    Medium中心: 1.6513
+    High中心: 1.7141
+  own_heading_cos:
+    均值: -0.9990, 标准差: 0.1620
+    范围: [-1.4617, -0.7546]
+    Low中心: -1.1609
+    Medium中心: -0.9990
+    High中心: -0.8370
+  missile_distance:
+    均值: 0.0663, 标准差: 0.3108
+    范围: [-0.3675, 0.6586]
+    Low中心: -0.2446
+    Medium中心: 0.0663
+    High中心: 0.3771
+  missile_azimuth_h:
+    均值: -1.5775, 标准差: 0.0429
+    范围: [-1.6496, -1.4903]
+    Low中心: -1.6204
+    Medium中心: -1.5775
+    High中心: -1.5346
+  missile_azimuth_v:
+    均值: -1.0437, 标准差: 0.1215
+    范围: [-1.2664, -0.8078]
+    Low中心: -1.1652
+    Medium中心: -1.0437
+    High中心: -0.9223
+
+------------------------------------------------------------
+规则ID: Rule_4_4
+目标动作: 4
+聚类ID: 4
+训练样本数: 14
+使用次数: 2
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 4
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.1880, 标准差: 0.1960
+    范围: [-0.4277, 0.2583]
+    Low中心: -0.3839
+    Medium中心: -0.1880
+    High中心: 0.0080
+  enemy_azimuth_h:
+    均值: 1.8329, 标准差: 0.1050
+    范围: [1.5928, 1.9438]
+    Low中心: 1.7280
+    Medium中心: 1.8329
+    High中心: 1.9379
+  enemy_azimuth_v:
+    均值: -0.5006, 标准差: 0.1844
+    范围: [-0.7148, -0.1044]
+    Low中心: -0.6850
+    Medium中心: -0.5006
+    High中心: -0.3163
+  own_heading_sin:
+    均值: -1.7833, 标准差: 0.0817
+    范围: [-1.8879, -1.6470]
+    Low中心: -1.8650
+    Medium中心: -1.7833
+    High中心: -1.7016
+  own_heading_cos:
+    均值: -0.7684, 标准差: 0.1689
+    范围: [-0.9942, -0.5006]
+    Low中心: -0.9372
+    Medium中心: -0.7684
+    High中心: -0.5995
+  missile_distance:
+    均值: 0.0014, 标准差: 0.2219
+    范围: [-0.3329, 0.3473]
+    Low中心: -0.2205
+    Medium中心: 0.0014
+    High中心: 0.2234
+  missile_azimuth_h:
+    均值: 1.7958, 标准差: 0.1009
+    范围: [1.5597, 1.8982]
+    Low中心: 1.6950
+    Medium中心: 1.7958
+    High中心: 1.8967
+  missile_azimuth_v:
+    均值: -0.7670, 标准差: 0.2168
+    范围: [-1.0080, -0.2965]
+    Low中心: -0.9838
+    Medium中心: -0.7670
+    High中心: -0.5503
+
+------------------------------------------------------------
+规则ID: Rule_4_5
+目标动作: 4
+聚类ID: 5
+训练样本数: 7
+使用次数: 1
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 4
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.8714, 标准差: 0.1315
+    范围: [-0.9500, -0.5756]
+    Low中心: -1.0029
+    Medium中心: -0.8714
+    High中心: -0.7399
+  enemy_azimuth_h:
+    均值: -0.8614, 标准差: 0.0736
+    范围: [-0.9687, -0.7990]
+    Low中心: -0.9350
+    Medium中心: -0.8614
+    High中心: -0.7877
+  enemy_azimuth_v:
+    均值: 0.0765, 标准差: 0.0825
+    范围: [-0.0458, 0.1460]
+    Low中心: -0.0060
+    Medium中心: 0.0765
+    High中心: 0.1590
+  own_heading_sin:
+    均值: 0.0213, 标准差: 0.1184
+    范围: [-0.0845, 0.2656]
+    Low中心: -0.0971
+    Medium中心: 0.0213
+    High中心: 0.1397
+  own_heading_cos:
+    均值: 0.5705, 标准差: 0.0200
+    范围: [0.5254, 0.5833]
+    Low中心: 0.5505
+    Medium中心: 0.5705
+    High中心: 0.5905
+  missile_distance:
+    均值: -0.2551, 标准差: 0.1421
+    范围: [-0.3525, 0.0579]
+    Low中心: -0.3972
+    Medium中心: -0.2551
+    High中心: -0.1129
+  missile_azimuth_h:
+    均值: -0.4606, 标准差: 0.0894
+    范围: [-0.6046, -0.3870]
+    Low中心: -0.5499
+    Medium中心: -0.4606
+    High中心: -0.3712
+  missile_azimuth_v:
+    均值: 0.4648, 标准差: 0.0508
+    范围: [0.3803, 0.5060]
+    Low中心: 0.4140
+    Medium中心: 0.4648
+    High中心: 0.5155
+
+------------------------------------------------------------
+规则ID: Rule_4_6
+目标动作: 4
+聚类ID: 6
+训练样本数: 5
+使用次数: 1
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 4
+
+特征隶属函数:
+  enemy_distance:
+    均值: -1.6341, 标准差: 0.0196
+    范围: [-1.6566, -1.6122]
+    Low中心: -1.6537
+    Medium中心: -1.6341
+    High中心: -1.6144
+  enemy_azimuth_h:
+    均值: -0.0883, 标准差: 0.0420
+    范围: [-0.1394, -0.0442]
+    Low中心: -0.1303
+    Medium中心: -0.0883
+    High中心: -0.0463
+  enemy_azimuth_v:
+    均值: 0.5917, 标准差: 0.0129
+    范围: [0.5760, 0.6049]
+    Low中心: 0.5789
+    Medium中心: 0.5917
+    High中心: 0.6046
+  own_heading_sin:
+    均值: -0.0709, 标准差: 0.1207
+    范围: [-0.2188, 0.0321]
+    Low中心: -0.1916
+    Medium中心: -0.0709
+    High中心: 0.0498
+  own_heading_cos:
+    均值: 0.5771, 标准差: 0.0022
+    范围: [0.5749, 0.5797]
+    Low中心: 0.5749
+    Medium中心: 0.5771
+    High中心: 0.5793
+  missile_distance:
+    均值: -3.7857, 标准差: 0.0274
+    范围: [-3.8172, -3.7551]
+    Low中心: -3.8131
+    Medium中心: -3.7857
+    High中心: -3.7583
+  missile_azimuth_h:
+    均值: -0.2122, 标准差: 0.0420
+    范围: [-0.2633, -0.1681]
+    Low中心: -0.2542
+    Medium中心: -0.2122
+    High中心: -0.1702
+  missile_azimuth_v:
+    均值: 0.5741, 标准差: 0.0136
+    范围: [0.5576, 0.5880]
+    Low中心: 0.5606
+    Medium中心: 0.5741
+    High中心: 0.5877
+
+------------------------------------------------------------
+规则ID: Rule_4_7
+目标动作: 4
+聚类ID: 7
+训练样本数: 6
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 4
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.8815, 标准差: 0.1493
+    范围: [-1.0337, -0.6026]
+    Low中心: -1.0307
+    Medium中心: -0.8815
+    High中心: -0.7322
+  enemy_azimuth_h:
+    均值: -1.3316, 标准差: 0.0309
+    范围: [-1.3631, -1.2659]
+    Low中心: -1.3625
+    Medium中心: -1.3316
+    High中心: -1.3007
+  enemy_azimuth_v:
+    均值: -0.6431, 标准差: 0.0640
+    范围: [-0.7110, -0.5081]
+    Low中心: -0.7071
+    Medium中心: -0.6431
+    High中心: -0.5791
+  own_heading_sin:
+    均值: -0.0264, 标准差: 0.0580
+    范围: [-0.0942, 0.0699]
+    Low中心: -0.0845
+    Medium中心: -0.0264
+    High中心: 0.0316
+  own_heading_cos:
+    均值: 0.5791, 标准差: 0.0048
+    范围: [0.5698, 0.5835]
+    Low中心: 0.5743
+    Medium中心: 0.5791
+    High中心: 0.5839
+  missile_distance:
+    均值: -2.7348, 标准差: 0.2084
+    范围: [-2.9474, -2.3455]
+    Low中心: -2.9433
+    Medium中心: -2.7348
+    High中心: -2.5264
+  missile_azimuth_h:
+    均值: -1.4552, 标准差: 0.0309
+    范围: [-1.4867, -1.3895]
+    Low中心: -1.4861
+    Medium中心: -1.4552
+    High中心: -1.4243
+  missile_azimuth_v:
+    均值: -0.7278, 标准差: 0.0675
+    范围: [-0.7994, -0.5854]
+    Low中心: -0.7953
+    Medium中心: -0.7278
+    High中心: -0.6603
+
+------------------------------------------------------------
+规则ID: Rule_5_0
+目标动作: 5
+聚类ID: 0
+训练样本数: 6
+使用次数: 2
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 5
+
+特征隶属函数:
+  enemy_distance:
+    均值: 1.9882, 标准差: 0.1179
+    范围: [1.8469, 2.1345]
+    Low中心: 1.8703
+    Medium中心: 1.9882
+    High中心: 2.1061
+  enemy_azimuth_h:
+    均值: 0.2214, 标准差: 0.0894
+    范围: [0.0850, 0.2851]
+    Low中心: 0.1320
+    Medium中心: 0.2214
+    High中心: 0.3109
+  enemy_azimuth_v:
+    均值: 0.6437, 标准差: 0.0070
+    范围: [0.6323, 0.6487]
+    Low中心: 0.6367
+    Medium中心: 0.6437
+    High中心: 0.6508
+  own_heading_sin:
+    均值: -0.0335, 标准差: 0.1125
+    范围: [-0.1136, 0.1356]
+    Low中心: -0.1460
+    Medium中心: -0.0335
+    High中心: 0.0790
+  own_heading_cos:
+    均值: 0.5759, 标准差: 0.0111
+    范围: [0.5584, 0.5837]
+    Low中心: 0.5648
+    Medium中心: 0.5759
+    High中心: 0.5870
+  missile_distance:
+    均值: 1.3474, 标准差: 0.0912
+    范围: [1.2161, 1.4763]
+    Low中心: 1.2562
+    Medium中心: 1.3474
+    High中心: 1.4385
+  missile_azimuth_h:
+    均值: 0.0975, 标准差: 0.0894
+    范围: [-0.0388, 0.1612]
+    Low中心: 0.0081
+    Medium中心: 0.0975
+    High中心: 0.1870
+  missile_azimuth_v:
+    均值: 0.6290, 标准差: 0.0074
+    范围: [0.6169, 0.6342]
+    Low中心: 0.6216
+    Medium中心: 0.6290
+    High中心: 0.6364
+
+------------------------------------------------------------
+规则ID: Rule_5_1
+目标动作: 5
+聚类ID: 1
+训练样本数: 46
+使用次数: 9
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 5
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.5363, 标准差: 0.1677
+    范围: [-0.7884, -0.0615]
+    Low中心: -0.7040
+    Medium中心: -0.5363
+    High中心: -0.3686
+  enemy_azimuth_h:
+    均值: 0.1292, 标准差: 0.1164
+    范围: [-0.1625, 0.7207]
+    Low中心: 0.0128
+    Medium中心: 0.1292
+    High中心: 0.2456
+  enemy_azimuth_v:
+    均值: 0.6333, 标准差: 0.0140
+    范围: [0.5679, 0.6479]
+    Low中心: 0.6192
+    Medium中心: 0.6333
+    High中心: 0.6473
+  own_heading_sin:
+    均值: -0.1090, 标准差: 0.0709
+    范围: [-0.3038, 0.2044]
+    Low中心: -0.1799
+    Medium中心: -0.1090
+    High中心: -0.0381
+  own_heading_cos:
+    均值: 0.5817, 标准差: 0.0066
+    范围: [0.5426, 0.5837]
+    Low中心: 0.5751
+    Medium中心: 0.5817
+    High中心: 0.5883
+  missile_distance:
+    均值: -0.4811, 标准差: 0.1918
+    范围: [-0.8327, 0.0453]
+    Low中心: -0.6729
+    Medium中心: -0.4811
+    High中心: -0.2893
+  missile_azimuth_h:
+    均值: 0.1655, 标准差: 0.0986
+    范围: [-0.1507, 0.6150]
+    Low中心: 0.0668
+    Medium中心: 0.1655
+    High中心: 0.2641
+  missile_azimuth_v:
+    均值: 0.6302, 标准差: 0.0141
+    范围: [0.5500, 0.6342]
+    Low中心: 0.6160
+    Medium中心: 0.6302
+    High中心: 0.6443
+
+------------------------------------------------------------
+规则ID: Rule_5_2
+目标动作: 5
+聚类ID: 2
+训练样本数: 8
+使用次数: 0
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 5
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.1864, 标准差: 0.1250
+    范围: [-0.4103, -0.0492]
+    Low中心: -0.3115
+    Medium中心: -0.1864
+    High中心: -0.0614
+  enemy_azimuth_h:
+    均值: -1.5239, 标准差: 0.0399
+    范围: [-1.5649, -1.4656]
+    Low中心: -1.5638
+    Medium中心: -1.5239
+    High中心: -1.4841
+  enemy_azimuth_v:
+    均值: -1.1546, 标准差: 0.1289
+    范围: [-1.2911, -0.9696]
+    Low中心: -1.2835
+    Medium中心: -1.1546
+    High中心: -1.0257
+  own_heading_sin:
+    均值: 1.6160, 标准差: 0.0524
+    范围: [1.5469, 1.6824]
+    Low中心: 1.5636
+    Medium中心: 1.6160
+    High中心: 1.6684
+  own_heading_cos:
+    均值: -0.9110, 标准差: 0.1211
+    范围: [-1.0685, -0.7546]
+    Low中心: -1.0321
+    Medium中心: -0.9110
+    High中心: -0.7900
+  missile_distance:
+    均值: -0.0657, 标准差: 0.1700
+    范围: [-0.3675, 0.1306]
+    Low中心: -0.2357
+    Medium中心: -0.0657
+    High中心: 0.1043
+  missile_azimuth_h:
+    均值: -1.5486, 标准差: 0.0395
+    范围: [-1.5906, -1.4903]
+    Low中心: -1.5880
+    Medium中心: -1.5486
+    High中心: -1.5091
+  missile_azimuth_v:
+    均值: -0.9612, 标准差: 0.1051
+    范围: [-1.0761, -0.8078]
+    Low中心: -1.0663
+    Medium中心: -0.9612
+    High中心: -0.8561
+
+------------------------------------------------------------
+规则ID: Rule_5_3
+目标动作: 5
+聚类ID: 3
+训练样本数: 13
+使用次数: 2
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 5
+
+特征隶属函数:
+  enemy_distance:
+    均值: 0.2211, 标准差: 0.0445
+    范围: [0.1621, 0.2782]
+    Low中心: 0.1765
+    Medium中心: 0.2211
+    High中心: 0.2656
+  enemy_azimuth_h:
+    均值: -0.1863, 标准差: 0.0450
+    范围: [-0.2541, -0.1471]
+    Low中心: -0.2312
+    Medium中心: -0.1863
+    High中心: -0.1413
+  enemy_azimuth_v:
+    均值: 0.5582, 标准差: 0.0178
+    范围: [0.5311, 0.5734]
+    Low中心: 0.5404
+    Medium中心: 0.5582
+    High中心: 0.5759
+  own_heading_sin:
+    均值: 0.1251, 标准差: 0.0502
+    范围: [0.0848, 0.2022]
+    Low中心: 0.0749
+    Medium中心: 0.1251
+    High中心: 0.1753
+  own_heading_cos:
+    均值: 0.5594, 标准差: 0.0104
+    范围: [0.5432, 0.5675]
+    Low中心: 0.5491
+    Medium中心: 0.5594
+    High中心: 0.5698
+  missile_distance:
+    均值: 0.3179, 标准差: 0.0558
+    范围: [0.2596, 0.4052]
+    Low中心: 0.2620
+    Medium中心: 0.3179
+    High中心: 0.3737
+  missile_azimuth_h:
+    均值: -0.1973, 标准差: 0.0477
+    范围: [-0.2737, -0.1608]
+    Low中心: -0.2450
+    Medium中心: -0.1973
+    High中心: -0.1496
+  missile_azimuth_v:
+    均值: 0.5786, 标准差: 0.0152
+    范围: [0.5538, 0.5900]
+    Low中心: 0.5634
+    Medium中心: 0.5786
+    High中心: 0.5937
+
+------------------------------------------------------------
+规则ID: Rule_5_4
+目标动作: 5
+聚类ID: 4
+训练样本数: 7
+使用次数: 1
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 5
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.2637, 标准差: 0.1419
+    范围: [-0.4277, -0.0941]
+    Low中心: -0.4056
+    Medium中心: -0.2637
+    High中心: -0.1218
+  enemy_azimuth_h:
+    均值: 1.8902, 标准差: 0.0258
+    范围: [1.8639, 1.9438]
+    Low中心: 1.8644
+    Medium中心: 1.8902
+    High中心: 1.9160
+  enemy_azimuth_v:
+    均值: -0.5997, 标准差: 0.0546
+    范围: [-0.7148, -0.5451]
+    Low中心: -0.6542
+    Medium中心: -0.5997
+    High中心: -0.5451
+  own_heading_sin:
+    均值: -1.8277, 标准差: 0.0490
+    范围: [-1.8879, -1.7730]
+    Low中心: -1.8767
+    Medium中心: -1.8277
+    High中心: -1.7787
+  own_heading_cos:
+    均值: -0.8577, 标准差: 0.1092
+    范围: [-0.9942, -0.7367]
+    Low中心: -0.9669
+    Medium中心: -0.8577
+    High中心: -0.7486
+  missile_distance:
+    均值: -0.0915, 标准差: 0.2011
+    范围: [-0.3329, 0.1514]
+    Low中心: -0.2926
+    Medium中心: -0.0915
+    High中心: 0.1096
+  missile_azimuth_h:
+    均值: 1.8493, 标准差: 0.0299
+    范围: [1.8152, 1.8982]
+    Low中心: 1.8194
+    Medium中心: 1.8493
+    High中心: 1.8792
+  missile_azimuth_v:
+    均值: -0.8792, 标准差: 0.0769
+    范围: [-1.0080, -0.7929]
+    Low中心: -0.9561
+    Medium中心: -0.8792
+    High中心: -0.8023
+
+------------------------------------------------------------
+规则ID: Rule_6_0
+目标动作: 6
+聚类ID: 0
+训练样本数: 20
+使用次数: 9
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 6
+
+特征隶属函数:
+  enemy_distance:
+    均值: -0.5786, 标准差: 0.1037
+    范围: [-0.7256, -0.3061]
+    Low中心: -0.6823
+    Medium中心: -0.5786
+    High中心: -0.4749
+  enemy_azimuth_h:
+    均值: 0.1256, 标准差: 0.0498
+    范围: [0.0984, 0.3341]
+    Low中心: 0.0758
+    Medium中心: 0.1256
+    High中心: 0.1754
+  enemy_azimuth_v:
+    均值: 0.6372, 标准差: 0.0030
+    范围: [0.6344, 0.6479]
+    Low中心: 0.6342
+    Medium中心: 0.6372
+    High中心: 0.6402
+  own_heading_sin:
+    均值: -0.1179, 标准差: 0.0262
+    范围: [-0.2157, -0.0986]
+    Low中心: -0.1442
+    Medium中心: -0.1179
+    High中心: -0.0917
+  own_heading_cos:
+    均值: 0.5834, 标准差: 0.0008
+    范围: [0.5799, 0.5837]
+    Low中心: 0.5826
+    Medium中心: 0.5834
+    High中心: 0.5843
+  missile_distance:
+    均值: -0.5257, 标准差: 0.1234
+    范围: [-0.6973, -0.2312]
+    Low中心: -0.6491
+    Medium中心: -0.5257
+    High中心: -0.4023
+  missile_azimuth_h:
+    均值: 0.1664, 标准差: 0.0397
+    范围: [0.1457, 0.3377]
+    Low中心: 0.1267
+    Medium中心: 0.1664
+    High中心: 0.2061
+  missile_azimuth_v:
+    均值: 0.6335, 标准差: 0.0027
+    范围: [0.6220, 0.6342]
+    Low中心: 0.6309
+    Medium中心: 0.6335
+    High中心: 0.6362
+
+------------------------------------------------------------
+规则ID: Rule_6_1
+目标动作: 6
+聚类ID: 1
+训练样本数: 6
+使用次数: 5
+规则描述: IF enemy_distance ∈ [Low|Medium|High] AND enemy_azimuth_h ∈ [Low|Medium|High] AND enemy_azimuth_v ∈ [Low|Medium|High] AND own_heading_sin ∈ [Low|Medium|High] AND own_heading_cos ∈ [Low|Medium|High] AND missile_distance ∈ [Low|Medium|High] AND missile_azimuth_h ∈ [Low|Medium|High] AND missile_azimuth_v ∈ [Low|Medium|High] THEN Action = 6
+
+特征隶属函数:
+  enemy_distance:
+    均值: 0.1983, 标准差: 0.0362
+    范围: [0.1621, 0.2345]
+    Low中心: 0.1621
+    Medium中心: 0.1983
+    High中心: 0.2345
+  enemy_azimuth_h:
+    均值: -0.1525, 标准差: 0.0053
+    范围: [-0.1579, -0.1471]
+    Low中心: -0.1578
+    Medium中心: -0.1525
+    High中心: -0.1472
+  enemy_azimuth_v:
+    均值: 0.5715, 标准差: 0.0019
+    范围: [0.5696, 0.5734]
+    Low中心: 0.5696
+    Medium中心: 0.5715
+    High中心: 0.5733
+  own_heading_sin:
+    均值: 0.0871, 标准差: 0.0023
+    范围: [0.0848, 0.0895]
+    Low中心: 0.0848
+    Medium中心: 0.0871
+    High中心: 0.0894
+  own_heading_cos:
+    均值: 0.5672, 标准差: 0.0004
+    范围: [0.5668, 0.5675]
+    Low中心: 0.5668
+    Medium中心: 0.5672
+    High中心: 0.5675
+  missile_distance:
+    均值: 0.2825, 标准差: 0.0229
+    范围: [0.2596, 0.3054]
+    Low中心: 0.2597
+    Medium中心: 0.2825
+    High中心: 0.3054
+  missile_azimuth_h:
+    均值: -0.1613, 标准差: 0.0004
+    范围: [-0.1618, -0.1608]
+    Low中心: -0.1617
+    Medium中心: -0.1613
+    High中心: -0.1609
+  missile_azimuth_v:
+    均值: 0.5899, 标准差: 0.0001
+    范围: [0.5898, 0.5900]
+    Low中心: 0.5898
+    Medium中心: 0.5899
+    High中心: 0.5900

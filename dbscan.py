@@ -26,7 +26,7 @@ from fuzzy_model import FuzzyClassifier
 def main():
     # 添加命令行参数解析
     parser = argparse.ArgumentParser(description='Train fuzzy classifier with optional ICA')
-    parser.add_argument('--use_ica', action='store_true', 
+    parser.add_argument('--use_ica', action='store_true', default=True,
                        help='Use ICA for dimensionality reduction')
     parser.add_argument('--ica_components', type=int, default=6,
                        help='Number of ICA components (default: 6)')
